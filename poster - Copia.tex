@@ -1,0 +1,274 @@
+%\title{LaTeX Portrait Poster Template}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% a0poster Portrait Poster
+% LaTeX Template
+% Version 1.0 (22/06/13)
+%
+% The a0poster class was created by:
+% Gerlinde Kettl and Matthias Weiser (tex@kettl.de)
+% 
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a0,portrait]{a0poster}
+
+
+\usepackage{multicol} % This is so we can have multiple columns of text side-by-side
+\columnsep=100pt % This is the amount of white space between the columns in the poster
+\columnseprule=3pt % This is the thickness of the black line between the columns in the poster
+
+\usepackage[svgnames]{xcolor} % Specify colors by their 'svgnames', for a full list of all colors available see here: http://www.latextemplates.com/svgnames-colors
+
+\usepackage{times} % Use the times font
+%\usepackage{palatino} % Uncomment to use the Palatino font
+\usepackage{tcolorbox}
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Location of the graphics files
+\usepackage{booktabs} % Top and bottom rules for table
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+\usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
+\usepackage{wrapfig} % Allows wrapping text around tables and figures
+\usepackage[portuges, brazil, english]{babel}  %define o idioma utilizado
+%\usepackage[latin1]{inputenc}% este pacote se aplica somente ao windows
+\usepackage{graphicx,colortbl}%permite inserir figuras
+\usepackage{lipsum} %sugest\~ao de texto
+
+\usepackage{geometry}
+\geometry{paperwidth=90cm,paperheight=120cm,centering, textwidth=77cm, top=4cm}% corresponde as dimensoes do poster
+\pagestyle{plain}  
+\frenchspacing
+%\usepackage{pstricks,pst-solides3d}
+%\usepackage{tikz}
+\definecolor{BoxCol}{RGB}{198,229,217} %c0or para ver mais cores visite o site Colour Lovers
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	POSTER HEADER 
+%----------------------------------------------------------------------------------------
+
+% The header is divided into two boxes:
+% The first is 80% wide and houses the title, subtitle, names, university/organization and contact information
+% The second is 20% wide and houses a logo for your university/organization or a photo of you
+% The widths of these boxes can be easily edited to accommodate your content as you see fit
+
+
+%
+\noindent\makebox[\textwidth][l]{%
+  \hspace{-\dimexpr\oddsidemargin+1in}%
+  \colorbox{BoxCol}{%
+    \parbox{\dimexpr\paperwidth-2\fboxsep}{\begin{center}
+		\VeryHuge \color{Black} \textbf{EQUA\c{C}\~OES DIFERENCIAIS ORDIN\'ARIAS APLICADAS NO ESTUDO DE CIRCUITOS EL\'ETRICOS} \color{Black}\\[1.5cm] % Title
+\Huge\textit{VII Semana de Inicia\c{c}\~ao Cient\'ifica e Tecnol\'ogica da UFU e Mostra de Trabalhos do PET}\\[2.0cm] % Subtitle
+\huge \textbf{Kerolayne Meneses da Silva e  Taciana Oliveira Souza$^{\dagger}$}\\[0.5cm] % Author(s)
+\huge Universidade Federal de Uberl\^andia, FEELT, FAMAT$^{\dagger}$\\[0.4cm] % University/organization
+\Large \texttt{kerolaynesilvaphb@gmail.com} 
+\end{center}}%		
+  }%
+}
+
+\vspace{1cm} % A bit of extra whitespace between the header and poster content
+
+%----------------------------------------------------------------------------------------
+
+\begin{multicols}{2} % This is how many columns your poster will be broken into, a portrait poster is generally split into 2 columns
+
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\color{Black} % SaddleBrown color for the introduction
+
+
+\section*{INTRODU\c{C}\~AO}
+
+Da necessidade de descrever sistemas ou fen\^omenos naturais surgiu a  modelagem matem\'atica, isto \'e, a descri\c{c}\~ao matem\'atica de um sistema ou fen\^omeno feita, em muitas situa\c{c}\~oes, por meio de equa\c{c}\~oes envolvendo as vari\'aveis atuantes. A partir da simula\c{c}\~ao de um fen\^omeno, s\~ao obtidos dados experimentais com os quais se elabora um modelo matem\'atico correspondente. Muitas vezes este modelo inclui a taxa de varia\c{c}\~ao de uma vari\'avel atuante, resultando nas chamadas Equa\c{c}\~oes Diferenciais Ordin\'arias (EDO's).
+As EDO's s\~ao subdivididas segundo sua ordem, onde se destacam as equa\c{c}\~oes de primeira e segunda ordem.  Destacamos a vasta gama de aplica\c{c}\~oes das EDO's dentro da modelagem de sistemas, fato que pode ser verificado nas refer\^encias \cite{BOYCE}, \cite{PACHECO}, \cite{SOUZA} e \cite{ZILL}.  Neste trabalho apresentamos aplicações das EDO's lineares de primeira e segunda ordens no estudo de circuitos el\'etricos.
+
+%Tais grupos de EDO's podem ser ramificados ainda em vários tipos de equações, destacando: equações separáveis, equações lineares, equações exatas e equações homogêneas e equações lineares de segunda ordem.
+
+\color{Black} % DarkSlateGray color for the rest of the content
+
+\setlength{\parindent}{2em}
+
+\section*{METODOLOGIA}
+
+O m\'etodo utilizado no desenvolvimento deste trabalho consistiu no estudo de livros e artigos relacionados ao tema proposto. Encontros semanais foram realizados nos quais a estudante  exp\^os sobre os t\'opicos estudados,  promovendo discuss\~oes com a orientadora para sanar as d\'uvidas surgidas. Para a apresenta\c{c}\~ao semanal de resultados, a estudante entrou ainda em contato com o ambiente TeXnicCenter (linguagem LateX) que permite a elabora\c{c}\~ao de textos t\'ecnico-cient\'ificos.
+
+
+%\subsection*{\tituloB{subse\c{c}\~ao}}
+
+\section*{RESULTADOS}
+
+\setlength{\parindent}{2em}
+
+Um circuito el\'etrico \'e formado por fontes de energia, fios condutores e alguns elementos el\'etricos como resistores, capacitores e indutores. O circuito \'e considerado fechado quando a corrente el\'etrica que sai do terminal positivo da fonte de energia, percorre todos os componentes e volta no polo oposto da fonte. Para compreender o funcionamento de um circuito, \'e necess\'ario saber conceitos b\'asicos de eletricidade que podem ser encontrados em \cite{CHARLES}.
+
+\subsection*{CIRCUITOS RL}
+
+O circuito RL \'e constitu\'ido por um resistor, um indutor e \'e alimentado por uma fonte. Por ele percorre uma corrente $I(t)$, como pode ser verificado na Figura 1 abaixo.
+
+\begin{minipage}[b]{0.90\linewidth}
+
+\centering
+\includegraphics[scale=0.6]{CircuitoA.pdf}\ 
+\begin{center}
+Figura 1: Circuito RL
+\end{center} 
+\end{minipage}
+
+Aplicando a Lei das Malhas de Kirchhoff e considerando uma corrente circulante no sentido hor\'ario, encontra-se a seguinte expressão:
+
+\begin{equation}
+V(t) = L \frac{dI}{dt} + RI.
+\end{equation}
+
+\noindent {\bf Exemplo:}
+Suponha que, no circuito da Figura 1, $V = 30 V$, $L = 0.1H$ e $R = 50\Omega$. Determine a corrente $I(t)$ sabendo que $I(0) = 0$.
+
+\noindent {\bf Solu\c{c}\~ao:}
+Como a equação (1) \'e uma EDO linear de primeira ordem, tem-se o seguinte fator integrante $\displaystyle u(t) = e^{\int \frac{R}{L}dt} = e^{\frac{Rt}{L}}$, multiplicando esse fator pela equação (1) resulta em
+
+\begin{center}
+$\displaystyle V(t)e^{\frac{Rt}{L}} = e^{\frac{Rt}{L}} \frac{dI}{dt} + e^{\frac{Rt}{L}} \frac{RI}{L}$.
+\end{center}
+Resolvendo a equação linear acima, obt\'em-se
+
+%\begin{center}
+%$\displaystyle I(t) = V + Ke^{\frac{-Rt}{L}}$
+%\end{center}
+\begin{center}
+$\displaystyle I(t) = 30 + Ke^{-500t}$.
+\end{center}
+Como $I(0) = 0$, $K = -30$. Portanto, a solu\'c{c}\~ao \'e
+
+\begin{center}
+$\displaystyle I(t) = 30 - 30e^{-500t}$.
+\end{center}
+
+\subsection*{CIRCUITOS RLC}
+
+O circuito RLC \'e semelhante ao RL, difere apenas pela adi\c{c}\~ao de um capacitor, como pode observado na Figura 2.
+
+\begin{minipage}[b]{0.90\linewidth}
+
+\centering
+\includegraphics[scale=0.6]{CircuitoB.pdf}\ 
+\begin{center}
+Figura 1: Circuito RL
+\end{center}
+ 
+\end{minipage}
+
+Aplicando a Lei das Malhas de Kirchhoff e considerando uma corrente circulante no sentido hor\'ario, encontra-se a seguinte express\~ao:
+
+\begin{equation}
+V(t) = L \frac{d^2Q}{dt^2} + R\frac{dQ}{dt} + \frac{Q}{C}.
+\end{equation}
+
+\noindent {\bf Exemplo:}
+Suponha que, no circuito da Figura 2, $V = 300 V$, $L = \displaystyle \frac{5}{3}H$, $R = 10\Omega$ e $C = \displaystyle \frac{1}{30}f$. Determine a corrente $I(t)$ e a carga $Q(t)$ sabendo que $Q(0) = 0$ e $Q'(0) = 0$.
+
+\noindent {\bf Solu\c{c}\~ao:} Pela equa\c{c}\~ao (2), tem-se:
+
+\begin{equation}
+300 = \frac{5}{3}\frac{d^2Q}{dt^2} + 10\frac{dQ}{dt} + 30Q.
+\end{equation}
+Aplicando a transformada de Laplace na equa\c{c}\~ao (3), adotando $\mathcal{L}\{Q(t)\} = q$:
+
+\begin{center}
+$\displaystyle \frac{5}{3}(s^2q - sq(0) - q'(0)) + 10(sq - q(0)) + 30q = \frac{300}{s}$.
+\end{center}
+Isolando $q$ para encontrar as transformadas elementares:
+
+\begin{center}
+$\displaystyle q = \frac{180}{s(s^2 + 6s + 18)}$.
+\end{center}
+Pelo m\'etodo das fra\c{c}\~oes parciais,
+
+\begin{center}
+$\displaystyle q = \frac{10}{s} - \frac{10(s + 3)}{(s + 3)^2 + 9} - \frac{30}{(s + 3)^2 + 9}$.
+\end{center}
+
+A equa\c{c}\~ao acima apresenta as seguintes transformadas inversas elementares: $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{a}{s} \Big\} = a$, $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{a}{s^2 + a^2} \Big\} = sen(at)$ e $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{s}{s^2 + a^2} \Big\} = cos(at)$. Aplicando a transformada inversa, obt\'em-se:
+
+\begin{equation}
+Q(t) = \mathcal{L}^{-1}\{q(s)\} = 10 - 10e^{-3t}cos(3t) -10e^{-3t}sen(3t).
+\end{equation} 
+
+Pela express\~ao $I(t) = \displaystyle \frac{dQ}{dt}$, tem-se
+
+\begin{equation}
+I(t) = 60e^{-3t}sen(3t).
+\end{equation} 
+
+
+%----------------------------------------------------------------------------------------
+%	CONCLUSIONS
+%----------------------------------------------------------------------------------------
+
+\color{Black} % SaddleBrown color for the conclusions to make them stand out
+
+\section*{CONCLUS\~AO}
+
+%Destaca-se  a introdu\c{c}\~ao dos estudantes \`a linguagem \LaTeX  (usada na digita\c{c}\~ao de textos matem\'aticos), a qual foi utilizada na elabora\c{c}\~ao deste p\^oster.
+%Conclui-se que a inicia\c{c}\~ao cient\'ifica proposta desempenhou um papel importante no desenvolvimento e amplia\c{c}\~ao da forma\c{c}\~ao  da estudante.
+
+Durante este estudo, pode-se perceber a import\^ancia das equa\c{c}\~oes diferenciais na modelagem de situa\c{c}\~oes reais, como na an\'alise de circuitos el\'etricos. Com isso, foi necess\'ario o contato uma nova linguagem de programa\c{c}\~ao, o LaTeX, que tornou poss\'ivel a escrita de termos matem\'aticos com maior facilidade. Portanto, esse projeto proporcionou uma nova perspectiva de an\'alise e resolu\c{c}\~ao de sistemas, proporcionando ferramentas essenciais para a resolu\c{c}\~ao de problemas do cotidiano humano.
+
+
+\section*{REFER\^ENCIAS}
+\begingroup
+\renewcommand{\section}[2]{}
+\begin{thebibliography}{99}
+
+\bibitem{BOYCE} BOYCE,  W. E;  Di PRIMA, R.C.,  {\it Equa\c{c}\~oes Diferenciais Elementares e Problemas de Valores de Contorno.}  8ed. Guanabara: LTC Editora, 2006.
+
+\bibitem{CHARLES} ALEXANDER, C. K.; SADIKU, M. N. O., {\it Fundamentos  de  Circuitos  El\'etricos.} 5ed. São Paulo: McGraw-Hill Ltda 2008.
+
+\bibitem{PACHECO} PACHECO, A. L. S.,  {\it Transformadas de Laplace: algumas aplica\c{c}\~oes.}  Monografia, 2011.
+
+\bibitem{SOUZA} RODRIGUES, B. P.; SOUZA, T. O., {\it Equa\c{c}\~oes Diferenciais Ordin\'arias: do Beisebol \`a Eletricidade.} Horizonte Cient\'ifico, v.10, n. 1, 2016.
+
+%\bibitem{SODRE} SODRÉ, U. {\it Equações Diferenciais Ordinárias.}  Notas de aula,  2003.
+
+%\bibitem{SPIEGEL} SPIEGEL, M. R.  {\it Transformadas de Laplace.}   McGraw-Hill do Brasil, 1971.
+
+%\bibitem{STEWART} STEWART, J. {\it Cálculo, Volume 2.} 7ed. São Paulo: Cengage Learning, 2013.
+
+%\bibitem{ZILL} ZILL, D. G., CULLEN, M. R. {\it Equações Diferenciais.} Makron Books, 2001.
+\bibitem{ZILL} ZILL, D. G., {\it Equa\c{c}\~oes Diferenciais com Aplica\c{c}\~oes em Modelagem.} São Paulo: Cengage Learning, 2011.
+
+
+\end{thebibliography}
+\endgroup
+
+%----------------------------------------------------------------------------------------
+
+\end{multicols}
+
+\vspace{5cm}
+
+\noindent\makebox[\textwidth][l]{%
+  \hspace{-\dimexpr\oddsidemargin+1in}%
+  \colorbox{BoxCol}{%
+    \parbox{\dimexpr\paperwidth-2\fboxsep}{\begin{center}
+\includegraphics[width=10cm]{logo_proexc}\hspace{5cm}     
+\includegraphics[width=10cm]{pet}\hspace{5cm}
+\includegraphics[width=7cm]{Imagem4}\\[5cm]
+\end{center}}%		
+  }%
+}
+
+\end{document}
+

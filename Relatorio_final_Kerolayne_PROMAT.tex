@@ -1,0 +1,1483 @@
+ \documentclass[dvipdfm.def, a4paper,12pt]{report}
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc} 
+\usepackage{dsfont} 
+\usepackage{amstext,amsthm,latexsym,amsmath, amsfonts,amssymb, amscd, bezier}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+
+
+\newtheorem{thm}{Teorema}[chapter]
+\newtheorem{rema}[thm]{Observa\c c\~ao}
+\newtheorem{afirm}[thm]{Afirma\c c\~ao}
+\newtheorem{lema}[thm]{Lema}
+\newtheorem{exam}[thm]{Exemplo}
+\newtheorem{defi}[thm]{Defini\c c\~ao}
+\newtheorem{prop}[thm]{Proposi\c c\~ao}
+\newtheorem{cor}[thm]{Corolário}
+\newtheorem{conj}[thm]{Conjectura}
+
+\newcommand{\dem}{\noindent {\bf Demonstração:}}
+\newcommand{\cqd}{\hfill $\rule{2.5mm}{2.5mm}$}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\setlength{\topmargin}{-0.2cm} \setlength{\textwidth}{16cm}
+\setlength{\textheight}{24.5cm} \setlength{\oddsidemargin}{0.5cm}
+\setlength{\evensidemargin}{-0.8cm}
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\bf Universidade Federal de Uberlândia}
+\end{center}
+
+
+\vspace*{4cm}
+
+\begin{center}
+{\Large {\bf Um estudo das equações diferenciais aplicadas na modelagem de sistemas}}
+\end{center}
+
+
+\vspace*{1.5cm}
+\begin{flushright}
+\begin{minipage}[t]{10cm}
+Relatório Final apresentado à Câmara de Pesquisa Extensão e Pós-Graduação, por exigência do término do Projeto de Iniciação Científica do Programa Institucional de Iniciação Científica e Monitoria da Faculdade de Matemática, referente ao período de novembro de 2016 a julho de 2017.
+
+\vspace*{0.5cm}
+
+Estudante: {\bf Kerolayne Meneses da Silva.}
+
+Curso: {\bf Engenharia Biomédica.}
+
+Período: {\bf $3^{\circ}$ período.}
+
+Orientadora: {\bf Profa. Dra. Taciana Oliveira Souza.}
+
+Departamento: {\bf Faculdade de Matemática.}
+
+
+
+\end{minipage}
+\end{flushright}
+
+\vspace*{5cm}
+
+\begin{center}
+\rule{14cm}{0.02cm}
+
+{\bf Uberlândia, julho de 2017}
+\end{center}
+
+
+\newpage
+
+
+%\thispagestyle{empty}
+
+\begin{center}
+{\bf Universidade Federal de Uberlândia}
+\end{center}
+
+
+\vspace*{4cm}
+
+\begin{center}
+{\Large {\bf Um estudo das equações diferenciais aplicadas na modelagem de sistemas}}
+\end{center}
+
+
+\vspace*{1.5cm}
+\begin{flushright}
+\begin{minipage}[t]{12cm}
+
+\vspace*{2.5cm}
+
+
+\begin{flushleft}
+
+\end{flushleft}
+
+
+
+\begin{center}
+\rule{11cm}{0.02cm}
+{\bf Kerolayne Meneses da Silva}
+{\bf (Estudante)}
+
+\vspace*{2.5cm}
+\rule{11cm}{0.02cm}
+{\bf Profa. Dra. Taciana Oliveira Souza}
+{\bf (Orientadora)}
+\end{center}
+
+\end{minipage}
+\end{flushright}
+
+\vspace*{5cm}
+
+\begin{center}
+\rule{14cm}{0.02cm}
+
+{\bf Uberlândia, julho de 2017}
+\end{center}
+
+
+
+
+\tableofcontents \thispagestyle{empty}
+
+\chapter*{Introdução} 
+ \addcontentsline{toc}{chapter}{Introdu\c{c}{\~a}o}
+
+
+%Da necessidade de descrever algum sistema ou fenômeno surgiu a área da modelagem matemática, isto é, a formulação de equações que descrevem  um sistema ou fenômeno por meio das variáveis atuantes. A partir da simulação de tal fenômeno, são obtidos dados experimentais os quais permitem a elaboração do modelo matemático. Muitas vezes este modelo inclui a taxa de variação de uma variável, resultando nas chamadas Equações Diferenciais Ordinárias (EDO's).
+
+%Esse tipo de equação surgiu com o estudo do Cálculo por Isaac Newton e Gottfried W. Leibniz durante o século XVII. Newton contribuiu para a classificação de equações diferenciais ordinárias, e seus esclarecimentos sobre os princípios básicos da mecânica forneceram a base para a aplicação das equações diferenciais ordinárias no século XVIII. Por outro lado, Leibniz contribuiu para o desenvolvimento das equações diferenciais ordinárias desenvolvendo o método de separação de variáveis, a redução de equações homogêneas a equações separáveis e o procedimento para resolver equações lineares de primeira ordem. No que diz respeito ao desenvolvimento do estudo das aplicações e da resolução das equações diferenciais, vários matemáticos ilustres estiveram envolvidos. Destaca-se Leonhard Euler, o qual desenvolveu -entre outros- a solução geral para as equações de coeficientes constantes e também a transformação integral, método este que viria, posteriormente, ser utilizado na solução das equações diferenciais por meio da  transformada de Laplace.
+Da necessidade de descrever sistemas ou fenômenos naturais surgiu a  modelagem matemática, isto é, a descrição matemática de um sistema ou fenômeno feita, em muitas situações, por meio de equações envolvendo as variáveis atuantes. A partir da simulação de um fenômeno, são obtidos dados experimentais com os quais se elabora um modelo matemático correspondente. Muitas vezes este modelo inclui a taxa de variação de uma variável atuante, resultando nas chamadas Equações Diferenciais Ordinárias (EDO's).
+
+Esse tipo de equação surgiu com o estudo do Cálculo por Isaac Newton e Gottfried W. Leibniz durante o século XVII. Newton contribuiu para a classificação de equações diferenciais ordinárias, e seus esclarecimentos sobre os princípios básicos da mecânica forneceram a base para a aplicação das equações diferenciais ordinárias no século XVIII. Por outro lado, Leibniz contribuiu para o desenvolvimento das equações diferenciais ordinárias desenvolvendo o método de separação de variáveis, a redução de equações homogêneas a equações separáveis e o procedimento para resolver equações lineares de primeira ordem. No que diz respeito ao desenvolvimento do estudo das aplicações e da resolução das equações diferenciais, vários matemáticos ilustres estiveram envolvidos. Destaca-se Leonhard Euler, o qual desenvolveu a solução geral para as equações de coeficientes constantes e também a transformação integral que, posteriormente, seria utilizada na resolução de equações diferenciais lineares por meio da  transformada de Laplace.
+
+
+
+As EDO's são subdivididas segundo sua ordem (ordem da mais alta derivada presente na equação), onde se destacam as equações de primeira e segunda ordem. Tais grupos de EDO's podem ser ramificados ainda em vários tipos de equações, destacando: equações separáveis, equações lineares, equações exatas e equações homogêneas, todas de primeira ordem, e equações lineares (homogêneas ou não) de segunda ordem.
+
+Destacamos a vasta gama de aplicações das EDO's dentro da modelagem de sistemas, fato que pode ser verificado nas referências \cite{BOYCE}, \cite{PACHECO},  \cite{SPIEGEL}, \cite{STEWART} e \cite{ZILL}. Elas são utilizadas, por exemplo, na mecânica e cinemática, circuitos elétricos, movimento dos fluídos, reações químicas, disseminação de doenças, decaimento radioativo e crescimento populacional. 
+
+\chapter*{Objetivos}
+\addcontentsline{toc}{chapter}{Objetivos}
+
+Levantar material sobre projetos e artigos que abordem o estudo das Equações Diferenciais Ordinárias e aplicar os conhecimentos adquiridos na modelagem de sistemas. Busca-se a ligação entre a teoria e o seu real uso na aplicação de problemas cotidianos. 
+
+Neste projeto os assuntos abordados são: 
+
+\begin{itemize}
+
+\item EDO's de primeira e segunda ordem. 
+
+\item Transformada de Laplace.
+
+\item Modelagem de sistemas naturais.
+
+\end{itemize}
+%Para a segunda parte do projeto, pretende-se finalizar o estudo da Transformada de Laplace e aplicar os métodos aprendidos do estudo das EDO’s na modelagem de sistemas naturais.
+
+Este projeto tem por finalidade despertar a vocação científica e aprimorar a habilidade de estudo e pesquisa da estudante no campo de conhecimento matemático. Além de desenvolver o pensamento científico e preparar para uma possível pós-graduação.
+
+
+\chapter*{Metodologia}
+\addcontentsline{toc}{chapter}{Metodologia}
+
+Este trabalho tem por finalidade realizar uma análise das Equações Diferenciais Ordinárias de primeira e segunda ordem e como elas podem ser aplicadas na resolução de problemas do cotidiano. Dessa forma, foi realizado um estudo aprofundado com base em livros e artigos referentes ao tema proposto. 
+%pesquisas bibliográficas existentes sobre o assunto.  
+
+A escolha desse tipo de abordagem surge do interesse de, a partir dessas equações, ser possível modelar problemas da realidade humana, mesclando diversas áreas do conhecimento, como física, biologia e química. Para facilitar a escrita dos termos matemáticos deste projeto foi necessária a aprendizagem de uma linguagem de programação adequada, nesse caso, o LaTex. 
+
+Espera-se que este trabalho possa servir como suporte para um melhor entendimento da importância das equações diferenciais na modelagem matemática e que possa suscitar a vontade do leitor de aprofundar os conhecimentos sobre o assunto.
+%na resolução de modelagens e que possa suscitar a vontade do leitor de aprofundar os conhecimentos sobre o assunto.
+
+\chapter*{Descrição das atividades}
+\addcontentsline{toc}{chapter}{Descrição das atividades}
+
+
+
+\section*{Atividades previstas e desenvolvidas}
+
+
+Inicialmente, foi realizada a leitura das referências bibliográficas para aquisição de conhecimento teórico sobre as Equações Diferenciais Ordinárias. Em seguida, foram resolvidos exercícios referentes ao conteúdo estudado a fim de proporcionar familiaridade com esse assunto. O primeiro tópico a ser explanado foi EDO's de primeira ordem com ênfase nas seguintes equações: separáveis, lineares, de Bernoulli, homogêneas e exatas. 
+
+Uma vez compreendido esse primeiro tópico, o estudo avançou para EDO's de segunda ordem. Em que o método de compreensão do conteúdo se assemelha ao anterior, a primeira parte a ser estudada foi EDO linear homogênea com coeficientes constantes e redução de ordem. No entanto, a partir de resolução de exercícios foi necessário estudar séries de potências para melhor compreensão da Equação de Euler, sendo que o conhecimento adquirido foi aplicado na solução de tais equações.
+ 
+Finalizada essa parte, o estudo progrediu para EDO linear não homogênea, utilizando dois métodos de resolução o  da variação dos parâmetros e o dos coeficientes a determinar.  
+%O tópico de estudo atual é a Transformada de Laplace, com ênfase nas propriedades, definição e transformada inversa de algumas funções.
+
+Por fim, foram estudadas a Transformada de Laplace, com ênfase nas propriedades e transformada inversa de algumas funções básicas, e as seguintes modelagens de sistemas: decaimento radioativo, dinâmica populacional, Lei de Newton do resfriamento ou aquecimento, disseminação de uma doença, reações químicas e circuitos elétricos. 
+%Ao final desse projeto serão realizados o relatório final e uma apresentação do trabalho em eventos científicos da UFU.
+%Para a segunda etapa desse projeto, pretende-se finalizar o tópico de Transformada de Laplace e as seguintes modelagens de sistemas: decaimento radioativo, dinâmica populacional, Lei de Newton do resfriamento/aquecimento, disseminação de uma doença, reações químicas e circuitos elétricos. Ao final desse projeto serão realizados o relatório final e uma apresentação do trabalho em eventos científicos da UFU.
+
+
+
+\section*{Atividades previstas e não desenvolvidas}
+
+Todas as atividades previstas no projeto de iniciação científica foram desenvolvidas.
+
+\section*{Atividades não previstas e desenvolvidas}
+
+Nenhuma atividade não prevista foi desenvolvida.
+
+
+\section*{Trabalhos apresentados e ou publicado}
+
+Nenhum trabalho resultante do projeto de iniciação científica foi apresentado e/ou publicado.
+
+
+
+
+\chapter{Equações Diferenciais Ordinárias}\label{cap2}
+
+
+Denomina-se Equação Diferencial Ordinária (EDO) toda equação que envolve uma função de uma variável real desconhecida, $ y = y(x) $, e algumas de suas derivadas. A ordem de uma equação diferencial ordinária é definida como a ordem da maior derivada que ocorre na equação, pode-se representar uma EDO de ordem $n$ da seguinte forma,
+
+\begin{center}
+$\displaystyle F(x,y,y^{\prime},..., y^{n}) = 0$.
+\end{center}
+
+\begin{exam} $ \displaystyle y'' + y' -2y - x^2 = 0 $ 
+
+Na equação acima, percebe-se que a derivada de ordem maior é $y''$. Assim, tem-se uma equação diferencial ordinária de segunda ordem.
+\end{exam}
+
+
+\section{Classificação pela linearidade}
+Uma EDO é classificada como linear se ela for dada por:
+
+\begin{center}
+
+$\displaystyle a_n(x)y^{n} + a_{n-1}(x)y^{(n-1)} + ... + a_1(x)y^{\prime} + a_0(x)y = g(x)$,
+
+\end{center}
+em que $a_n(x), a_{n-1}(x), ..., a_1(x)$ e $g(x)$ são funções reais dependentes de $x$. 
+
+
+\begin{exam} A equação $x^3y^{(4)} - x2y'' + 4xy' - 3y = 0$ é linear.
+Porém, a equação $2y'' + yy' = x$ é não linear.
+\end{exam}
+
+\section{Solução de uma Equação Diferencial Ordinária}
+
+Uma solução de uma EDO é uma função que satisfaz identicamente à EDO. A solução geral de uma EDO, em um intervalo $I$, é a família de todas as possíveis soluções da EDO definidas em $I$. O exemplo $ y' - y = 0$ tem solução geral $ y = Ce^x $, onde $C$ é uma constante qualquer e $ I = \mathbb{R} $, enquanto $ y = e^x $ é uma solução particular.
+
+
+\section{Equações Diferenciais Ordinárias de Primeira Ordem}
+
+\subsection{Equações Separáveis}
+
+{\it Equações Diferenciais Ordinárias Separáveis} são equações da forma $$ y' = g(x)h(y),$$ onde $g(x)$ é uma função na variável $x$ e $h(y)$ na variável $y$. 
+Denotando $p(y) = \displaystyle \frac{1}{h(y)}$, obtemos, a partir da EDO separável, a equação $p(y) y^{\prime} = g(x)$. Se $y = \phi(x)$ é uma solução da EDO, então $dy = \phi'(x)dx$ e, portanto,
+
+\begin{center}
+$\displaystyle \int p(y)dy = \int p(\phi(x))\phi'(x)dx = \int g(x)dx$
+\end{center}
+Assim, obtém-se a equação
+
+\begin{center}
+$P(y) = G(x) + K$
+\end{center} onde K é uma constante, $P(y)$ e $G(x)$ são primitivas de $p(y)$ e $g(x)$ respectivamente. Essa última equação define, de maneira implícita, a solução geral da EDO separável.
+
+\begin{exam} Determine a solução da EDO $(x + 1)y' = x + 6$.
+
+
+\noindent {\bf Solução:} Primeiro, reescreve-se a equação na forma $y' = g(x)h(y)$, isto é,
+
+\begin{center}
+$ y^{\prime} = \displaystyle \frac{x + 6}{x + 1}$
+\end{center}
+
+Assim, 
+\begin{center}
+$y = x + 5ln|x + 1| + K$
+\end{center}
+é a solução geral da EDO, onde $K$ é uma constante.
+\end{exam}
+
+\subsection{Equações Exatas}
+{\it Equações Diferenciais Ordinárias Exatas} são equações da forma $y' = - \displaystyle \frac{M(x,y)}{N(x,y)}$, ou de modo equivalente $$M(x,y)dx + N(x,y)dy = 0,$$ onde $$\displaystyle \frac{\partial F}{\partial x}(x,y) = M(x,y) \mbox{ \, e \, } \displaystyle \frac{\partial F}{\partial y}(x,y) = N(x,y)$$ para uma função real de duas variáveis $F(x,y)$. 
+
+
+O teorema a seguir exibe uma condição necessária e suficiente para classificar uma EDO de primeira ordem como exata.
+
+\begin{thm}\cite[Teorema 2.4.1]{ZILL} Sejam $M(x,y)$ e $N(x,y)$ contínuas e com derivadas parciais de primeira ordem continuas em uma região $R = \{(x,y)/ a< x <b, c< y < d\}$. Então, uma EDO da forma $M(x,y)dx + N(x,y)dy = 0$ é exata se, e somente se,
+\begin{center}
+$\displaystyle \frac{\partial M}{\partial y}(x,y) = \frac{\partial N}{\partial x}(x,y)$.
+\end{center}
+\end{thm}
+
+A equação $F(x,y) = C$, onde $C$ é uma constante, estabelece, de maneira implícita, a relação entre $y$ e $x$ de modo que $y$ seja a solução geral da EDO. De fato, se $y = y(x)$ é uma solução da EDO, então 
+
+\begin{center}
+$0 = M(x,y)dx + N(x,y)dy = \displaystyle \frac{\partial F}{\partial x}(x,y(x))dx + \frac{\partial F}{\partial y}(x,y(x))dy = \frac{d F}{dx}(x,y(x))$. 
+\end{center}
+Assim, $\displaystyle \frac{dF}{dx}(x,y(x)) = 0$ e, portanto, $F(x,y) = C$. 
+
+Integrando $\displaystyle \frac{\partial F}{\partial x}(x,y) = M(x,y)$, em relação a $x$, obtém-se
+
+\begin{center}
+$F(x,y) = \displaystyle \int M(x,y)dx + g(y)$,
+\end{center}
+onde $g(y)$ é uma função de $y$. Para determinar $g(y)$, observa-se que
+
+\begin{center}
+$\displaystyle g'(y) + \frac{\partial}{\partial y}\int M(x,y)dx = \frac{\partial F}{\partial y}(x,y) = N(x,y)$.
+\end{center}
+Assim, para obter $g(y)$ integramos, com relação a $y$, a função $\displaystyle N(x,y) - \frac{\partial}{\partial y}\int M(x,y)dx$.
+
+\begin{exam} Resolva a EDO $(2xy^2 - 3)dx + (2x^2y + 4)dy = 0$.
+
+
+\noindent {\bf Solução:} Primeiro, define-se
+
+\begin{equation}
+M(x,y) = 2xy^2 - 3
+\end{equation}
+\begin{equation}
+N(x,y) = 2x^2y + 4
+\end{equation}
+Pelo teorema 1.4, verifica-se que a EDO acima é exata
+
+\begin{center}
+$\displaystyle \frac{\partial M}{\partial y}(x,y) = \frac{\partial N}{\partial x}(x,y) = 4xy.$
+\end{center}
+Integrando a equação (1.1) em relação a $x$
+
+\begin{center}
+$F(x,y) = \displaystyle \int M(x,y)dx = x^2y^2 -3x + g(y).$
+\end{center}
+Derivando o resultado em relação a $y$
+
+\begin{center}
+$\displaystyle \frac{\partial F}{\partial y}(x,y) = 2x^2y + g^{\prime} (y) = N(x,y),$
+\end{center}
+portanto
+\begin{center}
+$g^{\prime} (y) = 4.$
+\end{center}
+Integrando a equação acima em relação a $y$
+
+\begin{center}
+$g(y) = 4y$
+\end{center}
+Assim,
+
+\begin{center}
+$F(x,y) = x^2y^2 - 3x + 4y = C$.
+\end{center}
+\end{exam}
+
+\subsection{Equações Homogêneas}
+
+{\it Equações Diferenciais Ordinárias Homogêneas} de primeira ordem são equações diferenciais que podem ser escritas na forma 
+$$y' = f(x,y),$$ de tal modo que, para todo $t$ real, $f(t.x,t.y) = f(x,y)$.
+
+Para resolver uma equação homogênea, considera-se a mudança da variável $z = y/x$, de modo a transformá-la em uma equação diferencial separável. Mais precisamente, deriva-se $y = zx$, em relação a $x$, para obter a equação $y' = xz' + z$ e, substituindo $y = zx$ e $y' = xz' + z$ em $y^{\prime} = f(x,y)$, encontra-se a equação
+
+\begin{center}
+$xz' + z = f(x,xz) = f(1,z)$.
+\end{center}
+A partir dessa equação, obtém-se a equação diferencial separável
+
+\begin{equation}\label{homogeseparavel}
+z' = \displaystyle \frac{1}{x}(f(1,z) - z)
+\end{equation}
+Resolvendo a equação (\ref{homogeseparavel}) obtém-se a solução da equação diferencial ordinária homogênea, pois $y = zx$.
+
+\begin{exam} Resolva a EDO $(x - y) + \displaystyle x\frac{dy}{dx} = 0$.
+
+
+\noindent {\bf Solução:} Assumindo $y = zx$, deriva-se esta expressão em relação a $x$
+
+\begin{center}
+$\displaystyle y^{\prime} = x z^{\prime} + z$
+\end{center} 
+Substituindo na equação homogênea, obtém-se uma equação separável
+
+\begin{center}
+$(x - zx) + \displaystyle x\left (x z^{\prime} + z\right ) = 0$
+\end{center} 
+Reescrevendo a equação acima na forma $z' = g(x)h(y)$
+
+\begin{center}
+$\displaystyle z^{\prime} = - \frac{1}{x}$
+\end{center} 
+Resolvendo a equação separável acima, obtém-se
+
+\begin{center}
+$z = -ln|x| + C$
+\end{center} 
+Como $z = y/x$, logo a solução geral é
+
+\begin{center}
+$y(x) = -xln|x| + xC$.
+\end{center} 
+\end{exam}
+
+\subsection{Equações Lineares de Primeira Ordem}
+
+Equações Diferenciais Ordinárias Lineares de Primeira Ordem são equações diferenciais com forma igual a $$y' + g(x)y = h(x)$$ onde $g(x)$ e $h(x)$ são funções de $x$ contínuas.
+
+Para determinar a solução desse tipo de equação, é necessário multiplicá-la pelo fator integrante $I(x) = \displaystyle e^{\int g(x)dx}$. Assim, obtém-se uma equação da seguinte forma
+
+\begin{center}
+$I(x)(y' + g(x)y) = I(x)h(x)$
+\end{center}
+\begin{center}
+$(I(x)y)' = I(x)h(x)$
+\end{center}
+\begin{center}
+$I(x)y = \displaystyle \int I(x)h(x)dx$
+\end{center}
+Assim, a solução da equação diferencial linear é dada por
+
+\begin{center}
+$y = \displaystyle \frac{1}{I(x)}\int I(x)h(x)dx$.
+\end{center}
+
+\begin{exam} Resolva a EDO $y^{\prime} + y = e^{3x}$.
+
+
+\noindent {\bf Solução:} Percebe-se que $g(x) = 1$ e $h(x) = e^{3x}$. Usando o fator integrante, $I(x) = \displaystyle e^{\int 1dx} = e^x$, obtém-se
+
+\begin{center}
+$e^xy = \displaystyle \int e^{3x} e^{x}dx = \frac{e^{4x}}{4} + C$
+\end{center}
+Assim, 
+
+\begin{center}
+$y = \displaystyle \frac{e^{3x}}{4} + e^{-x}C$
+\end{center}
+é a solução geral da EDO.
+\end{exam}
+
+\subsection{Equações de Bernoulli}
+
+Equações Diferenciais Ordinárias de Bernoulli são equações diferenciais da forma $$y' + p(x)y = q(x)y^n$$ onde $n$ é um número real qualquer.
+
+Observa-se que para $n = 0$ ou $n = 1$ a equação é linear de primeira ordem. Se $n \neq 0$ e $n \neq 1$, então considera-se a substituição $u = y^{1 - n}$ para reduzir a equação de Bernoulli a uma equação diferencial ordinária linear de primeira ordem.
+
+\begin{exam} Resolva a equação de Bernoulli $x^2 y^{\prime} + y^2 = xy$.
+
+
+\noindent {\bf Solução:} Adotando $u = y^{1-n}$ e substituindo na equação anterior, obtém-se a seguinte equação linear de primeira ordem
+
+\begin{center}
+$u' + x^{-1}u = x^{-2}$
+\end{center} 
+Resolvendo a equação linear acima, obtém-se
+
+\begin{center}
+$xu = ln|x| + C$
+\end{center} 
+Substituindo $u = y^{1-n}$ na equação obtida, encontra-se a solução da equação de Bernoulli
+
+\begin{center}
+$e^{x/y} = Cx$.
+\end{center} 
+\end{exam}
+
+\chapter{Equações Diferenciais Ordinárias Lineares de Segunda Ordem}\label{cap3}
+
+Equações Diferenciais Ordinárias Lineares de Segunda Ordem são equações que podem ser escritas da seguinte forma:
+
+\begin{equation}\label{linearsegunda}
+a(x)y'' + b(x)y' + c(x)y = d(x)
+\end{equation}
+onde $a(x), b(x), c(x)$ e $d(x)$ são funções reais da variável $x$ chamadas {\it coeficientes da EDO}. A equação (\ref{linearsegunda}) é chamada {\it homogênea} se $d(x) = 0$, para todo $x$, isto é, $d$ é a função constante igual a zero. Se $d(x) \neq 0$ a equação é chamada {\it não homogênea.}
+
+Assumindo a equação diferencial ordinária homogênea
+
+\begin{equation}\label{linearsegunda2}
+a(x)y'' + b(x)y' + c(x)y = 0
+\end{equation}
+tem-se o seguinte:
+
+\vspace*{0.5cm}
+\noindent{\bf Princípio da Superposição} Sejam $y_{1}$ e $y_{2}$ soluções de (\ref{linearsegunda2}), em um intervalo J, então
+
+\begin{center}
+$y = c_{1} y_{1} + c_{2} y_{2},$   
+\end{center}
+onde $c_{1}$ e $c_{2}$ são constantes quaisquer, também é solução de (\ref{linearsegunda2}).
+
+\begin{thm}\cite[Teorema 4.1.5]{ZILL} Se $y_{1}$ e $y_{2}$ são soluções linearmente independentes (l.i.) de (\ref{linearsegunda2}) em um intervalo $J$ e se $a(x) \neq 0$, para todo $x \in J$, então a solução geral de (\ref{linearsegunda2}), definida no intervalo J, é dada por 
+
+\begin{center}
+$y = c_{1} y_{1} + c_{2} y_{2}$,
+\end{center}
+onde $c_{1}$ e $c_{2}$ são constantes arbitrárias. 
+
+O teorema a seguir estabelece um critério para determinar quando duas soluções de uma equação diferencial ordinária homogênea são linearmente independentes.
+\end{thm}
+\begin{thm}\cite[Teorema 4.1.3]{ZILL} (Wronskiano) Sejam $y_{1}$ e $y_{2}$ soluções da equação diferencial ordinária homogênea na forma padrão
+
+\begin{center}
+$y'' + p(x)y' + q(x)y = 0$,
+\end{center}
+definidas em um intervalo $J$. Então, $y_{1}$ e $y_{2}$ são linearmente independentes em J se, e somente se, o Wronskiano
+ 
+$$ W[y_{1},y_{2}](x) = \left|
+\begin{array}{cc}
+y_{1}(x) & y_{2}(x)\\
+y_{1}'(x) & y_{2}'(x)\\
+\end{array}
+\right|
+$$
+é diferente de zero, para todo $x \in J$. 
+\end{thm}
+
+\section{Resolução das EDO's Lineares Homogêneas Com Coeficientes Constantes}
+
+A solução geral de uma EDO homogênea com coeficientes constantes
+
+\begin{equation}\label{coefconst}
+ay'' + by' + cy = 0
+\end{equation}
+depende das raízes da equação
+
+\begin{equation}\label{eqcaract}
+ar^{2} + br + c = 0
+\end{equation}
+chamada {\it equação característica} associada a (\ref{eqcaract}). Três casos devem ser considerados:  
+
+\begin{enumerate}
+\item A equação (\ref{eqcaract}) tem duas raízes reais distintas $r_{1}$ e $r_{2}$, nesse caso a solução geral de (\ref{coefconst}) é dada por $y = c_{1} e^{r_{1}} + c_{2} e^{r_{2}}$, onde $c_{1}$ e $c_{2}$ são constantes arbitrárias. 
+
+\item A equação (\ref{eqcaract}) tem uma única raiz real $r = -b/2a$, nesse caso a solução geral de (\ref{coefconst}) é dada por $y = c_{1} e^{r} + c_{2} x e^{r}$,
+onde $c_{1}$ e $c_{2}$ são constantes arbitrárias.
+   
+\item A equação (\ref{eqcaract}) tem duas raízes reais complexas conjugadas $r_{1} = \alpha + i\beta$ e $r_{2} = \alpha - i \beta$, nesse caso a solução geral de (\ref{coefconst}) é dada por $y = c_{1} e^{\alpha x} cos(\beta x) + c_{2} e^{\alpha x} sen(\beta x)$, onde $c_{1}$ e $c_{2}$ são constantes arbitrárias.
+\end{enumerate}
+ 
+\begin{exam} Resolva a EDO $y''-y'-6y = 0$.
+
+
+\noindent {\bf Solução:} Para encontrar a solução basta determinar as raízes de $r^2 - r -6 = 0$, isto é, $r_1 = -2$ e $r_2 = 3$.
+Assim, 
+
+\begin{center}
+$y = c_1e^{-2x} + c_2e^{3x}$,
+\end{center}
+é a solução geral da EDO.
+\end{exam}
+
+\section{Método da Redução de Ordem}
+
+Este método se aplica a uma equação diferencial ordinária homogênea na forma padrão
+ 
+\begin{equation}
+y'' + p(x)y' + q(x)y = 0
+\end{equation} 
+para determinar uma solução de (2.5) da forma $y_{2}(x) = v(x)y_{1}(x)$, onde $y_1(x)$ é uma solução particular conhecida de (2.5) e $v(x)$ satisfaz a equação
+
+\begin{equation}
+y_{1}(x)v''(x) + (2y'_{1}(x) + p(x)y_{1}(x))v'(x) = 0 
+\end{equation}
+
+A equação (2.6) é uma EDO de primeira ordem para $v'$, resolvendo essa equação, como EDO separável ou linear, determinamos $v'$. Por fim, para  obter $v$, calculamos a integral de $v'$.
+
+\begin{exam} Resolva $x^2y'' + 2xy' - 2y = 0$ sabendo que $y_1(x) = x$ é uma solução particular.
+
+
+\noindent {\bf Solução:} Supondo que $y_2(x) = v(x)y_1(x) = xv(x)$, derivando essa expressão encontra-se \linebreak $y_2' = v + xv'$ e $y_2'' = 2v' + xv''$. Substituindo na EDO, obtém-se
+
+\begin{center}
+$x^2(xv'' + 2v') + 2x(v + xv') - 2xv = 0$
+\end{center}
+Adotando $z = v'$ e $z' = v''$ para obter-se uma equação separável
+
+\begin{center}
+$xz' + 4z = 0$ 
+\end{center}
+Resolvendo equação acima
+
+\begin{center}
+$z = \displaystyle \frac{1}{x^4}$ 
+\end{center}
+Como $v' = z = \displaystyle \frac{1}{x^4}$, integrando a equação, obtém-se
+
+\begin{center}
+$v(x) = - \displaystyle \frac{1}{3x^3}$ 
+\end{center}
+Portanto,
+
+\begin{center}
+$y_2(x) = v(x)y_1(x) = - \displaystyle \frac{1}{3x^2}$. 
+\end{center}
+Assim, 
+$$y = \displaystyle c_1\, x - c_2 \,  \frac{1}{3x^2}$$
+onde $c_1$ e $c_2$ são constantes quaisquer, é a solução geral da EDO.
+\end{exam}
+
+\section{Equação de Cauchy-Euler}
+
+Equação de Cauchy-Euler é uma equação diferencial ordinária da forma
+
+\begin{equation}
+x^{2} y'' + axy' + by = 0 
+\end{equation}
+onde $a$ e $b$ são constantes. A solução geral de (2.7) depende das raízes da equação 
+
+\begin{equation}
+m^{2} + (a - 1)m + b = 0 
+\end{equation}
+chamada de {\it equação auxiliar} associado a (2.7). Três casos devem ser considerados:
+
+\begin{enumerate}
+\item A equação (2.8) tem duas raízes reais distintas $m_{1}$ e $m_{2}$, nesse caso a solução geral de (2.7) é dada por $y = c_{1}x^{m_{1}} + c_{2}x^{m_{2}}$, onde $c_{1}$ e $c_{2}$ são constantes arbitrárias.
+
+\item A equação (2.8) tem uma única raiz real $m = (1 - a)/2$, nesse caso a solução geral de (2.7), para $x \in$ (0,$\infty$), é dada por 
+$y = c_{1}x^{m} + c_{2} ln(x)x^{m}$, onde $c_{1}$ e $c_{2}$ são constantes arbitrárias. 
+
+\item A equação (2.8) tem duas raízes complexas conjugadas $m_{1} = \alpha + i\beta$ e $m_{2} = \alpha - i\beta$, nesse caso a solução geral de (2.7), para $x \in$ (0,$\infty$), é dada por $y = c_{1} x^{\alpha} cos(\beta \, ln(x)) + c_{2} x^{\alpha} sen(\beta \, ln(x))$, onde $c_{1}$ e $c_{2}$ são constantes arbitrárias. 
+\end{enumerate}
+
+\begin{rema} Soluções definidas no intervalo ($-\infty$,0) podem ser obtidas substituindo $t = -x$ na equação diferencial de Cauchy-Euler (2.7).
+\end{rema}
+
+\begin{exam} Resolva a equação de Cauchy-Euler $x^2  y'' - 2y = 0$.
+
+
+\noindent {\bf Solução:} Primeiramente, resolvendo a equação $m^2 - m - 2 = 0$, encontra-se $m_1 = -1$ e $m_2 = 2$.
+Portanto, a solução geral da equação é
+
+\begin{center}
+$y(x) = c_1x^{-1} + c_2x^{2}$.
+\end{center}
+\end{exam}
+
+\section{Equações Lineares Não Homogêneas}
+
+Equações Lineares não homogêneas são equações diferenciais da forma padrão 
+
+\begin{equation}
+y'' + p(x)y' + q(x)y = g(x) 
+\end{equation}
+onde $p(x), q(x)$ e $g(x)$ são funções contínuas em um intervalo $J$. Associada a (2.9) temos a equação diferencial ordinária homogênea 
+
+\begin{equation}
+y'' + p(x)y' + q(x)y = 0. 
+\end{equation}
+
+\begin{thm}\cite[Teorema 4.1.6]{ZILL} Se $y_{1}$ e $y_{2}$ são soluções linearmente independentes de (2.10), no intervalo $J$, e se $y_{p}$ é uma solução particular de (2.9), definida no intervalo $J$, então a solução geral de (2.9), definida no intervalo $J$, é dada por 
+
+\begin{center}
+$y = c_{1} y_{1} + c_{2} y_{2} + y_{p}$, 
+\end{center}
+onde $c_{1}$ e $c_{2}$ são constantes arbitrárias.
+\end{thm}
+
+\subsection{Método da Variação dos Parâmetros}
+
+Este método determina uma solução particular $y_{p}$ de uma equação diferencial ordinária não homogênea da forma
+
+\begin{center}
+$y'' + p(x)y' + q(x)y = g(x)$, 
+\end{center}
+onde $p(x), q(x)$ e $g(x)$ são funções contínuas em um intervalo $J$, para a qual conhecemos duas soluções linearmente independentes $y_{1}$ e $y_{2}$, definidas no intervalo $J$, da equação diferencial ordinária homogênea 
+
+\begin{center}
+$y'' + p(x)y' + q(x)y = 0$.
+\end{center}
+
+Mais precisamente, a solução particular é dada por
+
+\begin{center}
+$y_{p}(x) = v_{1}(x)y_{1}(x) + v_{2}(x)y_{2}(x)$,
+\end{center}
+onde
+
+\begin{center}
+$\displaystyle v_{1}(x) = - \int \frac{y_{2}(x)g(x)}{W[y_1,y_2]}dx,$
+\end{center}
+\begin{center}
+$\displaystyle v_{2}(x) = \int \frac{y_{1}(x)g(x)}{ W[y_1,y_2]}dx$.
+\end{center}
+
+\begin{exam} Resolva a EDO $4y'' + y = cos(x)$.
+
+\noindent {\bf Solução:} Primeiro, determina-se as raízes da equação característica $\displaystyle r^2 + \frac{1}{4} = 0$, isto é, $r_1 = \displaystyle \frac{1}{2}i$ e $r_2 = - \displaystyle \frac{1}{2}i$. Portanto,
+
+\begin{center}
+$y_h(x) = \displaystyle c_1cos{\left(\frac{x}{2} \right)} + \displaystyle c_2sen{\left(\frac{x}{2} \right)}$,
+\end{center}
+é a solução geral da EDO homogênea.
+Como $y_1 = \displaystyle cos{\left(\frac{x}{2} \right)}$, $y_2(x) = \displaystyle sen{\left(\frac{x}{2} \right)}$ e $g(x) = \displaystyle \frac{cos(x)}{4}$, substituindo em $v_1(x)$ e $v_2(x)$, encontra-se
+
+\begin{center}
+$v_1(x) = - \displaystyle \int \frac{1}{2}sen{\left(\frac{x}{2} \right)}cos(x)dx$
+\end{center}
+
+\begin{center}
+$v_2(x) = \displaystyle \int \frac{1}{2}cos(x)cos{\left(\frac{x}{2} \right)}dx$
+\end{center}
+Resolvendo as integrais
+
+\begin{center}
+$v_1(x) =  \displaystyle \frac{1}{3}cos\left(\frac{x}{2}\right)(cos(x) -2)$
+\end{center}
+
+\begin{center}
+$v_2(x) =  \displaystyle \frac{1}{3}sen\left(\frac{x}{2}\right)(cos(x) +2)$
+\end{center}
+Substituindo na solução particular $y_p(x) = v_1y_1 + v_2y_2$
+
+\begin{center}
+$y_p(x) = - \displaystyle \frac{cos(x)}{3}$
+\end{center}
+Como a solução geral é da forma $y(x) = y_h(x) + y_p(x)$, portanto
+
+\begin{center}
+$y(x) = \displaystyle c_1cos{\left(\frac{x}{2} \right)} + c_2sen{\left(\frac{x}{2} \right)} - \frac{cos(x)}{3}$.
+\end{center}
+\end{exam}
+
+\subsection{Método dos Coeficientes a Determinar}
+
+Esse método determina uma solução particular $y_{p}$ de uma equação diferencial ordinária da forma
+
+\begin{center}
+$ay'' + by' + cy = g(x)$  
+\end{center}
+onde $a$, $b$ e $c$ são constantes, nos seguintes casos:
+
+(1) $g(x)$ é um polinômio de grau n: nesse caso $y_{p}(x)$ é um polinômio de grau n se $c \neq 0$, grau $n + 1$ se $c = 0$ e $b \neq 0$, grau $n + 2$ se $c = b = 0$. 
+
+(2) $g(x) = p(x)e^{\alpha x}$: onde $p(x)$ é um polinômio de grau $n$ e $\alpha \neq 0$, nesse caso $y_{p} = u(x)e^{\alpha x}$, onde 
+ 
+\begin{itemize}
+\item $u(x)$ é um polinômio de grau n, se $\alpha$ não é raíz da equação característica $ar^{2} + br + c = 0$; 
+\item $u(x)$ é um polinômio de grau $n + 1$, se $\alpha$ é raíz, mas não única, da equação característica $ar^{2} + br + c = 0$; 
+\item $u(x)$ é um polinômio de grau $n + 2$, se $\alpha$ é raíz única da equação característica $ar^{2} + br + c = 0$.
+\end{itemize}
+
+(3) $g(x) = p(x)e^{\alpha x} cos(\beta x)$ ou $g(x) = p(x)e^{\alpha x} cos(\beta x)$, onde $p(x)$ é um polinômio de grau $n$: nesse caso $y_{p} = v_{1}(x)e^{\alpha x} cos(\beta x) + v_{2}(x)e^{\alpha x} sen(\beta x)$, onde 
+
+\begin{itemize}
+\item $v_{1}(x)$ e $v_{2}(x)$ são polinômios de grau n, se $\alpha + i \beta$ não é raíz da equação característica $ar^{2} + br + c = 0$. 
+\item $v_{1}(x)$ e $v_{2}(x)$ são polinômios de grau $n + 1$, se $\alpha + i \beta$ é uma raíz da equação característica $ar^{2} + br + c = 0$.
+\end{itemize}
+
+\begin{exam} Resolva a EDO $y'' -2y' -3y =  cos(2x)$.
+
+
+\noindent {\bf Solução:} As raízes da equação característica $r^2 - 2r -3 = 0$ são $r_1 = 3$ e $r_2 = -1$. Assim, a solução da EDO homogênea é
+
+\begin{center}
+$y_h(x) = c_1e^{3x} + c_2e^{-x}$
+\end{center}
+Para se encontrar a solução particular, adota-se $y_p = Acos(2x) + Bsen(2x)$ e suas respectivas derivadas, $y_p' = -2Asen(2x) + 2Bcos(2x)$ e $y_p'' = -4Acos(2x) - 4Bsen(2x)$. Substituindo esses valores na EDO, obtém-se
+
+\begin{center}
+$-4Acos(2x) - 4Bsen(2x) + 4Asen(2x) - 4Bcos(2x) - 3Acos(2x) - 3Bsen(2x) = cos(2x)$
+\end{center}
+e, portanto, $A = - \displaystyle \frac{7}{65}$ e $B = - \displaystyle \frac{4}{65}$. Assim, a solução particular é 
+
+\begin{center}
+$y_p = - \displaystyle \frac{7}{65}cos(2x) - \frac{4}{65}sen(2x)$. 
+\end{center}
+Portanto, a solução geral é
+
+\begin{center}
+$y(x) = \displaystyle c_1e^{3x} + c_2e^{-x} - \frac{7}{65}cos(2x) - \frac{4}{65}sen(2x)$.
+\end{center}
+\end{exam}
+
+\chapter{Transformada de Laplace}\label{cap4}
+
+A transformada de Laplace de uma função $f(t)$ de uma variável real, para $t \geq 0$, é definida por
+
+\begin{center}
+$ \mathcal{L}\{f(t)\} = F(s) = \displaystyle \int^{\infty}_{0} e^{-st}f(t)dt$
+\end{center}
+desde que a integral imprópria seja convergente.
+
+
+
+
+\begin{rema} Quando a integral $\displaystyle \displaystyle \int^{\infty}_{0} e^{-st}f(t)dt$ converge o resultado é uma função da variável $s$, isto é, a transformada de Laplace de $f$ é uma função da variável $s$.
+\end{rema}
+
+
+\begin{exam} $\mathcal{L}\{0\} = 0$; $\mathcal{L}\{1\} = \displaystyle \frac{1}{s}$, para $s > 0$.
+\end{exam}
+
+
+\noindent {\bf Notação:} Usa-se letras maiúsculas para denotar a tranformada de Laplace, por exemplo,
+
+\begin{center}
+$\mathcal{L}\{f(t)\} = F(s),$
+\end{center}
+\begin{center}
+$\mathcal{L}\{g(t)\} = G(s),$
+\end{center}
+
+\begin{center}
+$\mathcal{L}\{y(t)\} = Y(s).$
+\end{center}
+
+
+
+\section{Condições suficientes Para a Existência da Transformada de Laplace}
+
+\begin{defi} (descontinuidade de primeira espécie) Um ponto $t_0$ é chamado ponto de descontinuidade de primeira espécie de uma função real $f(t)$ se $\displaystyle \lim_{t \rightarrow {t_{0}}^{-}} f(t)$ e $\displaystyle \lim_{t \rightarrow {t_{0}}^{+}} f(t)$ existem, isto é, os limites laterais existem.
+\end{defi}
+
+\begin{defi} (função contínua por partes) Uma função real $f(t)$ é chamada contínua por partes em $[0,\infty)$ se, em qualquer intervalo $(a,b) \subset [0,\infty)$, existe apenas um número finito de pontos de descontinuidade sendo todos de primeira espécie.
+\end{defi}
+
+\begin{defi} (ordem exponencial) Dizemos que uma função real $f(t)$ é de ordem exponencial $c$ se existem constantes $c$, $M > 0$ e $T > 0$ tal que $|f(t)| \leq Me^{ct}$ para $t \in (T,\infty)$.
+\end{defi}
+
+\begin{exam}\begin{itemize}
+\item $f(t) = t$, para $t > 0$ é de ordem exponencial.
+De fato, $|f(t)| = |t| \leq e^t$, $M = 1$ e $c = 1$.
+
+\item $f(t) = 2cos(t)$, para $t > 0$ é de ordem exponencial.
+De fato, $|f(t)| = |2cos(t)| \leq 2 \leq 2e^t$, com $M = 2$ e $c = 1$.
+\end{itemize}
+\end{exam}
+
+\begin{thm}\cite[Teorema 7.1.2]{ZILL} Seja $f(t)$ uma função real contínua por partes no intervalo $[0,\infty)$ e de ordem exponencial $c$. Então, a transformada de Laplace $\mathcal{L}\{f(t)\}$ de $f$ existe para todo $s > c$.
+\end{thm}
+
+
+
+\noindent {\bf Propriedade (linearidade):} Para $\alpha$ e $\beta$, números reais quaisquer, têm-se
+
+\begin{center}
+$\mathcal{L}\{\alpha f(t) + \beta g(t)\} = \alpha \mathcal{L}\{f(t)\} + \beta \mathcal{L}\{g(t)\}$.
+\end{center}
+
+\begin{exam} Seja $h(t) = 2 + t$, então, pela linearidade da transformada, $\mathcal{L}\{h(t)\} = \displaystyle 2 \mathcal{L}\{1\} + \mathcal{L}\{t\} = \frac{2}{s} + \frac{1}{s^2}$.
+\end{exam}
+
+\begin{thm}\label{translacao}\cite[Teorema 7.3.1]{ZILL} (Translação) Se $a$ um número real fixado, então 
+
+\begin{center}
+$\mathcal{L}\{e^{at}f(t)\} = F(s -a)$,
+\end{center}
+onde $F(s) = \mathcal{L}\{f(t)\}$.
+\end{thm}
+
+\begin{thm}\cite[Teorema 7.4.1]{ZILL} (Derivada da transformada) Para $n = 1,2,3, \ldots$, têm-se
+
+\begin{center}
+$\mathcal{L}\{t^nf(t)\} = (-1)^n F^{(n)}(s)$, 
+\end{center}
+onde $F^{(n)}(s)$ denota a derivada de ordem $n$ de $F(s) = \mathcal{L}\{f(t)\}$.
+\end{thm}
+
+\begin{thm}\label{TransfordaDeri}\cite[Teorema 7.2.2]{ZILL} (Transformada de uma derivada)  Se $f(t), f'(t),\ldots,f^{(n-1)}(t)$ forem contínuas em $[0,\infty)$ e de ordem exponencial, e se $f^{(n)}(t)$ for contínua por partes em $[0,\infty)$, então
+
+\begin{center}
+$\displaystyle \mathcal{L}\{f^{(n)}(t)\} = s^{n} F(s) - s^{(n-1)}f(0) - s^{(n-2)} f'(0) -\cdots- f^{(n-1)}(0)$,
+\end{center}
+onde $F(s) = \mathcal{L}\{f(t)\}$.
+\end{thm}
+
+\noindent {\bf Transformada de algumas funções básicas:}
+
+\begin{enumerate}
+\item $\mathcal{L}\{1\} = \displaystyle \frac{1}{s}$;
+
+\item $\mathcal{L}\{t^n\} = \displaystyle \frac{n!}{s^{n+1}}, n = 1,2,3,...$;
+
+\item $\mathcal{L}\{sen(kt)\} = \displaystyle \frac{k}{s^2 + k^2}$, onde $k$ é uma constante;
+
+\item $\mathcal{L}\{cos(kt)\} = \displaystyle \frac{s}{s^2 + k^2}$, onde $k$ é uma constante;
+
+\item $\mathcal{L}\{e^{at}\} = \displaystyle \frac{1}{s - a}$, onde $a$ é uma constante.
+\end{enumerate}
+
+\section{Transformada Inversa de Laplace}
+
+\begin{defi} A transformada inversa de Laplace de $F(s)$ é uma função $f(t)$ tal que $\mathcal{L}\{f(t)\} = F(s)$.
+\end{defi}
+
+\noindent {\bf Notação:} $f(t) = \mathcal{L}^{-1}\{F(s)\}$.
+
+\noindent {\bf Propriedade (linearidade da transformada inversa):} Para $\alpha$ e $\beta$, números reais quaisquer, temos 
+
+\begin{center}
+$\mathcal{L}^{-1}\{\alpha F(s) + \beta G(s)\} = \alpha\mathcal{L}^{-1}\{F(s)\} + \beta\mathcal{L}^{-1}\{G(s)\}$.
+\end{center}
+
+\begin{thm}\label{translacaoinversa} (Forma inversa da translação) Se $a$ um número real fixado, então \linebreak $e^{at}f(t) = \mathcal{L}^{-1}\{F(s -a)\}$, onde $f(t) = \mathcal{L}^{-1}\{F(s)\}$.
+\end{thm}
+
+\noindent {\bf Transformada inversa de algumas funções básicas:}
+\begin{enumerate}
+\item $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{1}{s} \Big\} =  1$;
+
+\item $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{n!}{s^{n+1}} \Big\} = t^n, n = 1,2,3,...$;
+
+\item $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{k}{s^2 + k^2} \Big\} = sen(kt)$, onde $k$ é uma constante;
+
+\item $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{s}{s^2 + k^2} \Big\} = cos(kt)$, onde $k$ é uma constante;
+
+\item $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{1}{s - a} \Big\} = e^{at}$, onde $a$ é uma constante.
+\end{enumerate}
+
+\begin{exam} Calcule $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{1}{s^2(s + 4)} \Big\}$.
+
+
+\noindent {\bf Solução:} Aplicando o método das frações parciais,
+
+\begin{center}
+$\displaystyle \frac{1}{s^2(s + 4)} = \frac{A}{s} + \frac{B}{s^2} + \frac{C}{s + 4}$
+\end{center}
+Resolvendo as frações, encontra-se $A = \displaystyle \frac{-1}{16}$, $B = \displaystyle \frac{1}{4}$ e $C = \displaystyle \frac{1}{16}$. Substituindo esses valores na transformada inversa resulta em
+
+\begin{center}
+$\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{1}{s^2(s + 4)} \Big\} = \displaystyle \mathcal{L}^{-1}\ \Big\{\frac{-1}{16s} \Big\} + \mathcal{L}^{-1}\ \Big\{\frac{1}{4s^2} \Big\} + \mathcal{L}^{-1}\ \Big\{\frac{1}{16(s + 4)} \Big\}$
+\end{center}
+Resolvendo as transformadas inversas, obtém-se a seguinte função
+
+\begin{center}
+$\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{1}{s^2(s + 4)} \Big\} = \displaystyle \frac{-1}{16} + \frac{t}{4} + \frac{e^{-4t}}{16}$.
+\end{center}
+\end{exam}
+
+
+\begin{exam} Resolva a EDO $y'' - 4y' + 4y = t^3e^{2t}$ sabendo que $y(0) = 0$ e $y'(0) = 0$.
+
+\noindent {\bf Solução:} Aplicando a Transformada de Laplace na EDO acima, obtém-se
+
+\begin{center}
+$\mathcal{L}\{y'' - 4y' + 4y\} = \mathcal{L}\{t^3e^{2t}\} $
+\end{center}
+Por linearidade,
+
+\begin{center}
+$\mathcal{L}\{y''\} - 4\mathcal{L}\{y'\} + 4\mathcal{L}\{y\} = \mathcal{L}\{t^3e^{2t}\} $
+\end{center}
+Resolvendo as transformadas acima pelo Teorema \ref{TransfordaDeri}, obtém-se
+
+\begin{center}
+$\displaystyle (s^2Y - sy(0) - y'(0)) - 4(sY - y(0)) + 4Y = \frac{6}{(s -2)^4} $
+\end{center}
+Substituindo $y(0) = 0$ e $y'(0) = 0$ na equação resulta em 
+
+\begin{center}
+$\displaystyle s^2Y - 4sY + 4Y = \frac{6}{(s -2)^4}$
+\end{center}
+Isolando $Y$, obtém-se
+
+\begin{center}
+$\displaystyle Y = \frac{6}{(s - 2)^4(s^2 - 4s + 4)}$
+\end{center}
+Fatorando a equação 
+
+\begin{center}
+$\displaystyle Y(s) = \frac{6}{(s - 2)^6}$
+\end{center}
+Sabe-se que $\displaystyle \mathcal{L}\{t^n\} = \frac{n!}{s^{n+1}}$ e, aplicando o Teorema \ref{translacaoinversa} em $Y(s)$, obtém a seguinte solução da EDO
+
+\begin{center}
+$\displaystyle y(t) = \frac{t^5e^{2t}}{20}$.
+\end{center}
+\end{exam}
+
+
+
+\chapter{Modelagem de Sistemas}\label{cap5}
+\section{Decaimento Radioativo}
+
+O átomo é formado pelo núcleo, que é constituído por duas partículas subatômicas: os prótons e os nêutrons, e pela eletrosfera, que contém os elétrons. Átomos de determinado elemento químico podem ter o mesmo número de prótons ou número atômico, porém ter diferentes números de nêutrons ou número de massa, quando eles apresentam essa configuração são chamados de isótopos.
+ 
+A maioria dos núcleos encontrados na natureza são estáveis, entretanto, existem algumas substâncias, chamadas radioisótopos, que são instáveis e emitem espontaneamente partículas e radiação eletromagnética. A emissão de radiação é uma forma do núcleo dessas substâncias alcançar a estabilidade e reduzir sua energia interna. O urânio-238 é um exemplo de elemento radioativo que sofre uma reação nuclear em que são emitidos núcleos de hélio-4:
+
+\begin{center}
+$U \rightarrow  Th + He$
+\end{center}
+
+Quando um núcleo de um elemento se decompõe espontâneamente, diz-se que ele sofreu um decaimento radioativo. Os três tipos de decaimento mais comuns são: a radiação alfa $(\alpha)$, beta $(\beta)$ e gama $(\gamma)$. As partículas alfa apesar de serem muito energéticas são facilmente barradas por placas com finas espessuras, as partículas beta são mais penetrantes e menos energéticas que as partículas alfa e as partículas gama quando emitidas têm um poder de penetração mais intenso que as partículas anteriores e se um ser humano for exposto por um longo período de tempo a essa radiação, poderá causar má formação de células. 
+
+O decaimento radioativo de um determinado elemento pode ser definido como a taxa de desintegração da substância diretamente proporcional a quantidade de material existente $(x)$, isto é,
+
+\begin{equation}
+\displaystyle \frac{dx}{dt} = kx
+\end{equation} 
+onde $k$ é constante de proporcionalidade.
+
+
+
+\begin{rema} Em física, {\bf meia-vida} de uma substância radioativa é o tempo necessário para a metade dos átomos em uma quantidade inicial $A_0$ desintegrar-se ou \linebreak transformar-se em átomos de um outro elemento. Quanto maior for a meia-vida de uma substância, mais estável ela será. Assim, a meia-vida é uma medida da estabilidade de uma substância radioativa. 
+\end{rema}
+
+
+
+\begin{exam}
+O isótopo radioativo de chumbo, Pb-209, decai a uma taxa proporcional à quantidade presente no instante $t$ e tem uma meia-vida de $3,3$ horas. Se houver $x(0) = 1$, quanto tempo levará para que $90\%$ do chumbo decaia?
+
+\noindent {\bf Solução:} Aplicando o método da EDO separável na equação (4.1) , tem-se
+
+\begin{center}
+$\displaystyle x = Ce^{kt}$.
+\end{center}
+Substituindo $x(0) = 1$ na equação acima, obtém-se o valor da contante $C = 1$
+\begin{center}
+$\displaystyle x = e^{kt}$.
+\end{center}
+Para $x(3,3) = \displaystyle \frac{1}{2}$, encontra-se o valor de $k = - 0,21$
+\begin{center}
+$\displaystyle x = e^{-0,21t}$.
+\end{center}
+Como deseja-se o tempo quando $90\%$ de chumbo tiver decaído, então substitui-se $x(t) = 0,1$ na equação acima e obtém-se $t = 10,96$ horas.
+\end{exam}
+
+\section{Dinâmica Populacional}
+
+A taxa de crescimento de uma população se comporta como uma curva exponencial se for desprezado a resistência do meio. Considerando uma população de tamanho $P(t)$ em um determinado instante de tempo $(t)$, a taxa de crescimento exponencial pode ser escrita como,
+
+\begin{equation}
+\frac{dP}{dt} = kP
+\end{equation}
+onde $k$ é uma constante de proporcionalidade.
+
+Contudo, uma taxa de crescimento exponencial é difícil de se manter na realidade, pois o meio ambiente restringe os recursos necessários para a sobrevivência de uma população. Além dela enfrentar fatores, como: a taxa de mortalidade e fertilidade e a migração de indivíduos, que afetam drasticamente a quantidade de habitantes. 
+
+Assim, outra forma de descrever o crescimento ou decaimento de uma população é quando ela depende apenas da quantidade de indivíduos e desconsidera mecanismos dependentes do tempo, como escrito na equação abaixo:
+
+\begin{equation}
+\displaystyle \frac{dP}{dt} = Pf(P).
+\end{equation} 
+
+Supondo que um meio consiga suportar um número limite de $K$ habitantes, essa quantidade pode ser chamada de capacidade de suporte. Estabelecendo que $f(K) = 0$, $f(0) = r$ e sendo $f(P)$ linear, então $f(P) = C_2 + C_1P$. Aplicando as condições iniciais anteriores, obtém-se  $C_1 = \displaystyle - \frac{r}{K}$ e $C_2 = r$. Assim, $f(P) = \displaystyle r - \frac{rP}{K}$ e a equação (4.3) assume a forma 
+
+\begin{equation}
+\displaystyle \frac{dP}{dt} = \displaystyle P \Big (r - \frac{rP}{K} \Big)
+\end{equation} 
+Adotando $a = r$ e $b = \displaystyle -\frac{r}{K}$, tem-se
+
+\begin{equation}
+\displaystyle \frac{dP}{dt} = P(a + bP).
+\end{equation} 
+
+\begin{exam}
+Considerando o modelo de população suburbana de uma grande cidade igual a 
+\begin{center}
+$\displaystyle \frac{dP}{dt} = P(10^{-1} - 10^{-7}P)$,   $P(0) = 5000$,
+\end{center}
+onde $t$ é medido em meses. Qual é o valor limite da população? Em que instante a população será igual à metade desse valor limite?
+
+\noindent {\bf Solução:}
+Aplicando o método da EDO separável na equação acima, tem-se
+\begin{center}
+$\displaystyle \frac{dP}{P(10^{-1} - 10^{-7}P)} = dt$
+\end{center}
+Pelo método das frações parciais, 
+
+\begin{center}
+$\displaystyle \frac{10dP}{P} + \frac{10^{-6}dP}{10^{-1} - 10^{-7}P} = dt$
+\end{center}
+Integrando em ambos os lados da equação acima, obtém-se 
+
+\begin{center}
+$P(t) = \displaystyle \frac{10^{-1}Ce^{0,1t}}{1 + 10^{-7}Ce^{0,1t}}$
+\end{center}
+Como $P(0) = 5000$, encontra-se o valor da constante $C = \displaystyle \frac{5000}{10^{-1} - 0,0005}$,
+
+\begin{equation}
+P(t) = \displaystyle \frac{500}{0,0005 + 0,0995e^{-0,1t}}
+\end{equation}
+Considerando um tempo extremamente longo,
+
+\begin{center}
+$\displaystyle \lim_{t \rightarrow \infty} \displaystyle \frac{500}{0,0005 + 0,0995e^{-0,1t}} = 1.000.000$
+\end{center}
+Portanto, quando o tempo tende ao infinito a população alcança um valor limite de $1.000.000$ de  habitantes. Agora, considerando metade desse valor, $P(t) = 500.000$, e igualando a expressão (4.6),
+
+\begin{center}
+$P(t) = 500.000 = \displaystyle \frac{500}{0,0005 + 0,0995e^{-0,1t}}.$
+\end{center}
+Obtém-se que a população levará $52,98$ meses para atingir essa quantidade de habitantes.
+\end{exam}
+
+
+\section{Lei de Newton do Resfriamento ou Aquecimento}
+
+Quando um corpo com temperatura $T$ é exposto a um ambiente com temperatura $T_m$, onde $T \neq T_m$, ele tende, com o decorrer do tempo, a alcançar o equilíbrio térmico com o ambiente. 
+
+O resfriamento ou aquecimento de um objeto depende de diversos fatores, como: a superfície de contato, a diferença de temperatura entre o corpo e o meio externo, o calor específico do material que o constitui, o tempo de contato com o meio e o tipo de ambiente em que ele se encontra.
+
+A lei de Newton do resfriamento ou aquecimento é descrita como a taxa de variação de temperatura $T(t)$ proporcional à diferença entre a temperatura inicial do corpo $T$ e a temperatura ambiente $T_m$ constante, isto é,
+\begin{equation}
+\displaystyle \frac{dT}{dt} = k (T - T_m)
+\end{equation}
+onde $k$ é uma constante de proporcionalidade que depende do material do qual o corpo é constituído.
+
+\begin{exam} Supondo um objeto que apresenta temperatura inicial igual $70^{\circ}F$ e é colocado em um forno pré-aquecido com temperatura constante. Determine a temperatura do forno $(T_m)$, sabendo que $\displaystyle T \Big (\frac{1}{2}\Big) = 110^{\circ}F$ e $T(1) = 145^{\circ}F$.
+
+\noindent {\bf Solução:} Aplicando o método da EDO separável na equação (4.7), tem-se:
+
+\begin{center}
+$\displaystyle T(t) = T_m + Ce^{kt}$
+\end{center}
+Substituindo $T(0) = 70^{\circ}F$ na equação acima, encontra-se a constante $C = 70 - T_m$,  
+
+\begin{center}
+$\displaystyle T = T_m + (70 - T_m)e^{kt}$
+\end{center}
+Como $\displaystyle T \Big (\frac{1}{2}\Big) = 110^{\circ}F$ e $T(1) = 145^{\circ}F$, obtém-se as seguintes equações,
+
+\begin{center}
+$\displaystyle T_m + (70 - T_m)e^{\frac{k}{2}} = 110$
+\end{center}
+\begin{center}
+$\displaystyle T_m + (70 - T_m)e^{k} = 145$
+\end{center}
+Colocando em evidência $\displaystyle e^{\frac{k}{2}}$ nas equações acima,
+
+\begin{equation}
+\displaystyle \displaystyle e^{\frac{k}{2}} = \frac{110 - T_m}{70 - T_m}
+\end{equation}
+\begin{equation}
+\displaystyle \displaystyle (e^{\frac{k}{2}})^2 = \frac{145 - T_m}{70 - T_m}
+\end{equation}
+Substituindo  (4.8) em (4.9),
+
+\begin{center}
+$\displaystyle \displaystyle \Big (\frac{110 - T_m}{70 - T_m}\Big)^2 = \frac{145 - T_m}{70 - T_m}$
+\end{center}
+Desenvolvendo a equação acima, obtém-se que a temperatura ambiente é $T_m = 390^{\circ}F$.
+\end{exam}
+
+\section{Disseminação de uma Doença}
+
+A propagação de doenças entre os seres humanos somente foi possível quando o homem passou a viver em comunidades, isso criou o ambiente favorável para a rápida circulação de agentes infecciosos. Com o surgimento das grandes civilizações, iniciou-se a inter comunicação entre os continentes e assim ampliou-se o poder de disseminação de doenças infectocontagiosas pelo mundo, resultando em pandemias como a peste negra, a gripe espanhola e a aids que afetaram drasticamente a população mundial. 
+
+Para uma doença ser eficiente na sua transmissão, é necessário que existam um reservatório ou uma fonte de infecção que transporte o agente infecioso para diversos ambientes. As condições como a umidade e a circulação de ar, a temperatura e o grau de higiene são fatores cruciais na disseminação de agentes num espaço físico. 
+
+A transferência de uma doença infecciosa depende da interação entre os indivíduos de uma comunidade. Se $x(t)$ representa o número de pessoas que adquiriram uma doença e $y(t)$ o número de pessoas saudáveis. Supondo que essa doença se espalhe a uma taxa proporcional ao número de interações entre os grupos $x(t)$ e $y(t)$, então
+ 
+\begin{equation}
+\displaystyle \frac{dx}{dt} = kxy
+\end{equation}
+onde $k$ é uma constante de proporcionalidade.
+
+\begin{exam}
+Supondo que um estudante portador de um vírus da gripe retorne para um campus universitário fechado com mil estudantes. Determine a equação que descreve o número de pessoas $x(t)$ que contrairão a gripe, se a taxa segundo a qual a doença se espalha for proporcional ao número de interações entre os estudantes gripados e os estudantes que ainda não foram expostos ao vírus.
+
+\noindent {\bf Solução:} Pela equação (4.10), tem-se:
+
+\begin{center}
+$\displaystyle \frac{dx}{dt} = kx(1000 - x)$
+\end{center}
+Solucionando a equação acima pelo método da EDO separável,
+
+\begin{center}
+$x(t) = \displaystyle \frac{1000 C e^{1000kt}}{1 + C e^{1000kt}}$
+\end{center}
+Substituindo $x(0) = 1$ na equação acima, obtém-se $C = \displaystyle \frac{1}{999}$. Portanto, a equação que representa o número de estudantes que contrairão gripe é 
+
+\begin{center}
+$x(t) = \displaystyle \frac{1000 e^{1000kt}}{999 + e^{1000kt}}$.
+\end{center}
+\end{exam}
+
+\section{Reações Químicas}
+
+Para uma reação química ocorrer é necessário o contato de duas ou mais substâncias, a combinação dos íons e moléculas dos reagentes serão responsáveis pela formação do produto. As reações podem ser escritas quantitativamente, pois sabe-se que um átomo não pode ser criado nem destruído, ele apenas se reajusta a outros. Assim, é possível determinar uma reação onde os reagentes ficam do lado esquerdo da seta e os produtos do lado direito, como demonstrado abaixo.  
+
+\begin{center}
+$2Na + 2H_2O \rightarrow 2NaOH + H_2$
+\end{center}
+
+Uma equação química obedece a lei da conservação das massas em que a massa total do sistema quando em recipiente fechado permanece constante. Ela é considerada balanceada quando existe a mesma quantidade de um elemento químico em ambos os lados da reação. Para entender melhor esses tópicos, é necessário o conhecimento prévio de química que pode ser encontrado em \cite{ATKINS} e \cite{BROWN}.
+
+Para descrever uma reação química, supõe-se que uma molécula da substância $A$ junte-se com uma molécula da subtância $B$ para formar uma molécula da substância $C$.
+
+\begin{center}
+$A + B \rightarrow C$
+\end{center}
+
+Denotando $X$ como a quantidade de substância $C$ formada em um certo intervalo de tempo $t$ e $\alpha$ e $\beta$ representando, respectivamente,
+a quantidade de $A$ e $B$ quando $t = 0$. A quantidade de substância $A$ e $B$, respectivamente, que falta reagir para formar o produto pode ser representado por $(\alpha - X)$ e $(\beta - X)$ ou pelas seguintes expressões,
+ 
+\begin{equation}
+\displaystyle \alpha - \frac{M}{M + N}X 
+\end{equation}
+\begin{equation}
+\displaystyle \beta - \frac{N}{M + N}X
+\end{equation}
+Portanto, a taxa de formação de $C$ é proporcional à quantidade das substâncias $A$ e $B$ que ainda restam na reação,
+
+\begin{equation}
+\displaystyle \frac{dX}{dt} = k (\alpha - X)(\beta - X)
+\end{equation}
+onde $k$ é a constante de proporcionalidade.
+
+\begin{exam}
+Supondo que duas substâncias $A$ e $B$ sejam combinadas para formar uma substância química $C$. Inicialmente, há $40$g de $A$ e $50$g de $B$, e para cada grama de $B$ são usados $2$g de $A$. Sabendo que $X(5) = 10$g, quanto de $C$ será formado em 20 minutos?
+
+\noindent {\bf Solução:} Pelas relações (4.11) e (4.12), tem-se
+
+\begin{center}
+$\displaystyle 40 - \frac{2}{3}X = 120 - 2X$
+\end{center}
+\begin{center}
+$\displaystyle 50 - \frac{1}{3}X = 150 - X$
+\end{center}
+Substituindo essas expressões na equação (4.13),
+
+\begin{center}
+$\displaystyle \frac{dX}{dt} = k (120 - 2X)(150 - X)$
+\end{center}
+\begin{center}
+$\displaystyle \frac{dX}{(120 - 2X)(150 - X)} = kdt$
+\end{center}
+Pelo método das frações parciais, 
+
+\begin{center}
+$\displaystyle \frac{dX}{90(120 - 2X)} - \frac{dX}{180(150 - X)} = kdt$
+\end{center}
+Itegrando em ambos os lados da equação acima,
+
+\begin{center}
+$\displaystyle \frac{150 - X}{120 - 2X} = Ce^{180kt}$
+\end{center}
+Como $X(0) = 0$, a constante é $C = \displaystyle \frac{5}{4}$, assim
+\begin{center}
+$\displaystyle X(t) = \frac{300 -300e^{180kt}}{2 - 5e^{180t}}$.
+\end{center}
+
+Para $X(5) = 10$, encontra-se o valor de $k = 0,0001257$. Como deseja-se a quantidade de $C$ para $t = 20$min, então substituindo o valor de $k$ e $t$ desejado, obtém-se $X(20) = 29,3$g de produto formados.
+\end{exam}
+
+\section{Circuitos Elétricos}
+
+Um circuito elétrico é formado por fontes de energia, fios condutores e alguns elementos elétricos como resistores, capacitores e indutores. O circuito é considerado fechado quando a corrente elétrica que sai do terminal positivo da fonte de energia percorre todos os componentes e volta no polo oposto da fonte. Para compreender o funcionamento de um circuito, é necessário saber conceitos básicos de eletricidade que podem ser encontrados em \cite{CHARLES} e \cite{YOUNG}.
+
+A carga elétrica $(Q)$ é definida como um conceito físico que determina interações eletromagnéticas de corpos carregados eletricamente. A estrutura dos átomos é constituída por prótons e nêutrons no núcleo e circulando pelo seu exterior elétrons. Quando um corpo apresenta número igual de prótons e elétrons, ele é definido como neutro, porém quando apresenta uma divergência entre essas cargas diz-se que está eletrizado. 
+
+O movimento da carga elétrica dentro de um condutor constitui a corrente elétrica $(I)$, que pode ser definida como a taxa de variação da carga pelo tempo. 
+
+\begin{equation}
+I = \displaystyle \frac{dQ}{dt}
+\end{equation}
+
+Para manter o movimento de carga elétrica em um circuito é necessário adicionar uma força eletromotriz ou fontes. Elas fornecem energia elétrica para manter o circuito, portanto para existir corrente elétrica é necessário que as cargas realizem trabalho quando atravessam a fonte.    
+
+Além desses elementos, os circuitos elétricos também apresentam resistores, indutores e capacitores. Os resistores se opõem à passagem de corrente elétrica e com isso consomem energia, a unidade de medida desse elemento  é o ohm $(\Omega)$. Quanto aos indutores e capacitores, eles armazenam energia elétrica em seus interiores e suas respectivas unidades são a indutância $(L)$ e a capacitância $(C)$. 
+
+Sabe-se que cada componente provoca uma variação na energia do sistema e isso resulta em uma diferença de potencial entre os terminais da fonte. Por meio da Lei das Malhas de Kirchhoff é possível definir essa diferença, pois ela estabelece que a soma dos potenciais dentro de uma malha é sempre igual a zero.
+
+As diferenças de potenciais da resistência, do capacitor e do indutor, respectivamente, são dadas abaixo:
+
+\begin{equation}
+V_{R}(t) = RI
+\end{equation}
+\begin{equation}
+V_{C}(t) = \displaystyle \frac{Q}{C}
+\end{equation}
+\begin{equation}
+V_{L}(t) = \displaystyle L\frac{dI}{dt}
+\end{equation}
+
+A partir da combinação desses elementos é definido o tipo de circuito, se ele é circuito RL ou circuito RLC.
+
+\subsection*{Circuitos RL}
+
+O circuito RL é constituído por um resistor de $R$ ohms $(\Omega)$, um indutor de indutância $L$ henries $(H)$ e é alimentado por uma fonte em volts $(V)$. Por ele percorre uma corrente $I(t)$ em ampères $(A)$, como pode ser verificado na Figura 4.1 abaixo.
+
+\begin{figure}[h]\label{Circuito RL}
+	\centering
+		\includegraphics[scale=0.4]{CircuitoA.pdf}
+	\caption{Circuito RL}
+\end{figure}
+
+Aplicando a Lei das Malhas de Kirchhoff e considerando uma corrente circulante no sentido horário, encontra-se a seguinte expressão:
+
+\begin{center}
+$V(t) - V_R(t) - V_L(t) = 0$.
+\end{center}
+
+$V_R(t)$ e $V_L(t)$ tem sinais negativos, pois representam as quedas de tensões desses componentes quando percorridos pela corrente proveniente da fonte. Reajustando a equação, é possível perceber que a soma dessas quedas é igual a tensão da fonte.
+
+\begin{equation}
+V(t) = L \frac{dI}{dt} + RI
+\end{equation}
+
+\begin{exam}
+Supondo que, o circuito da Figura 4.1, $V = 30 V$, $L = 0.1H$ e $R = 50\Omega$. Determine a corrente $I(t)$ sabendo que $I(0) = 0$.
+
+\noindent {\bf Solução:}
+Como a equação (4.18) é uma EDO linear de primeira ordem, tem-se o seguinte fator integrante $\displaystyle u(t) = e^{\int \frac{R}{L}dt} = e^{\frac{Rt}{L}}$, multiplicando esse fator pela equação (4.18)
+
+\begin{center}
+$\displaystyle V(t)e^{\frac{Rt}{L}} = e^{\frac{Rt}{L}} \frac{dI}{dt} + e^{\frac{Rt}{L}} \frac{RI}{L}$
+\end{center}
+Resolvendo a equação linear acima, obtém-se
+
+\begin{center}
+$\displaystyle I(t) = V + Ke^{\frac{-Rt}{L}}$
+\end{center}
+Substituindo os valores determinados no enunciado
+
+\begin{center}
+$\displaystyle I(t) = 30 + Ke^{-500t}$
+\end{center}
+Como $I(0) = 0$, $K = -30$, então, a solução é
+
+\begin{center}
+$\displaystyle I(t) = 30 - 30e^{-500t}$.
+\end{center}
+\end{exam}
+
+\subsection*{Circuitos RLC}
+
+O circuito RLC é semelhante ao RL, difere apenas pela adição de um capacitor de capacitância $C$ farads $(F)$, como pode ser verificado na Figura 4.2.
+
+
+\begin{figure}[h]\label{CircuitoRLC}
+	\centering
+		\includegraphics[scale=0.4]{CircuitoB.pdf}
+	\caption{Circuito RLC}
+\end{figure}
+
+Aplicando a Lei das Malhas de Kirchhoff e considerando uma corrente circulante no sentido horário, encontra-se as seguintes expressões:
+
+\begin{center}
+$V(t) - V_R(t) - V_c(t) - V_L(t) = 0$.
+\end{center}
+\begin{equation}
+V(t) = L \frac{d^2Q}{dt^2} + R\frac{dQ}{dt} + \frac{Q}{C}
+\end{equation}
+
+\begin{exam}
+Supondo que, o circuito da Figura 4.2, $V = 300 V$, $L = \displaystyle \frac{5}{3}H$, $R = 10\Omega$ e $C = \displaystyle \frac{1}{30}f$. Determine a corrente $I(t)$ e a carga $Q(t)$ sabendo que $Q(0) = 0$ e $Q'(0) = 0$.
+
+\noindent {\bf Solução:} Pela equação (4.19), tem-se:
+
+\begin{equation}
+300 = \frac{5}{3}\frac{d^2Q}{dt^2} + 10\frac{dQ}{dt} + 30Q
+\end{equation}
+Solucionando pelo método da EDO linear não homogênea de segunda ordem:
+
+\begin{center}
+$Q(t) = Q_p(t) + Q_c(t)$
+\end{center} 
+onde $Q_c(t)$ é tal que
+
+\begin{center}
+$\displaystyle \frac{5}{3}Q_c'' + 10Q_c' + 30Q_c = 0$
+\end{center} 
+
+A equação auxiliar da expressão acima é $\displaystyle \frac{5}{3}r^2 + 10r + 30 = 0$, de raízes $r_1 = -3 -3i$ e $r_2 = -3 + 3i$. Assim,
+
+\begin{center}
+$\displaystyle Q_c(t) = e^{-3t}(c_1cos(3t) + c_2sen(3t))$.
+\end{center}
+
+Quanto a $Q_p$, espera-se encontrar uma constante. Assim, $Q_p = A$, $Q_p' = 0$ e $Q_p'' = 0$. Substituindo esses valores na equação (4.20), tem-se $30A = 300 \Rightarrow A = 10$. Desse modo, $Q_p = 10$ e a carga é:
+
+\begin{center}
+$Q(t) = e^{-3t}(c_1cos(3t) + c_2sen(3t)) + 10$
+\end{center}
+
+Pela expressão (4.14),
+
+\begin{center}
+$I(t) = -3e^{-3t}(c_1cos(3t) + c_2sen(3t)) + e^{-3t}(-3c_1sen(3t) + 3c_2cos(3t))$
+\end{center} 
+
+Como $Q(0) = 0$ e $Q'(0) = 0$, obtém-se os seguintes valores de constantes: $c_1 = -10$ e $c_2 = -10$. Substituindo nas equações,
+
+\begin{equation}
+Q(t) = - 10e^{-3t}cos(3t) -10e^{-3t}sen(3t) + 10
+\end{equation}
+\begin{equation}
+I(t) = 60e^{-3t}sen(3t)
+\end{equation} 
+
+Outra forma de resolução é aplicando a transformada de Laplace na equação (4.19), adotando $\mathcal{L}\{Q(t)\} = q$:
+
+\begin{center}
+$\displaystyle \frac{5}{3}(s^2q - sq(0) - q'(0)) + 10(sq - q(0)) + 30q = \frac{300}{s}$
+\end{center}
+Isolando $q$ para encontrar as transformadas elementares:
+
+\begin{center}
+$\displaystyle q = \frac{180}{s(s^2 + 6s + 18)}$.
+\end{center}
+Pelo método das frações parciais,
+
+\begin{center}
+$\displaystyle q = \frac{10}{s} + \frac{-10s -60}{s^2 + 6s + 18}$
+\end{center}
+\begin{center}
+$\displaystyle q = \frac{10}{s} + \frac{-10s -60}{(s + 3)^2 + 9}$
+\end{center}
+\begin{center}
+$\displaystyle q = \frac{10}{s} - \frac{10(s + 3)}{(s + 3)^2 + 9} - \frac{30}{(s + 3)^2 + 9}$
+\end{center}
+
+A equação acima apresenta as seguintes transformadas inversas elementares: $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{a}{s} \Big\} = a$, $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{a}{s^2 + a^2} \Big\} = sen(at)$ e $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{s}{s^2 + a^2} \Big\} = cos(at)$. Aplicando a transformada inversa, obtém-se a equação da carga:
+
+\begin{equation}
+Q(t) = \mathcal{L}^{-1}\{q(s)\} = 10 - 10e^{-3t}cos(3t) -10e^{-3t}sen(3t)
+\end{equation} 
+
+Pela expressão (4.14),
+
+\begin{equation}
+I(t) = 60e^{-3t}sen(3t)
+\end{equation} 
+\end{exam}
+Comparando os resultados obtidos, percebe-se que as equações (4.20) e (4.22), (4.21) e (4.23) são equivalentes, o que valida o método.
+
+
+\chapter*{Conclusão}
+\addcontentsline{toc}{chapter}{Conclusão}
+
+Este projeto teve por objetivo ampliar o conhecimento sobre o conteúdo apresentado, que foram as equações diferenciais ordinárias, mais especificamente as equações diferenciais ordinárias de primeira e segunda ordem e a transformada de Laplace. Nele é apresentado o que são estas equações e como resolvê-las, além de desenvolver algumas possíveis aplicações e como podem ser usadas na realidade.
+
+As EDO's podem ser estudadas e desenvolvidas em diversas área do conhecimento e com os resultados obtidos podem modificar a forma da sociedade enxergar determinadas situações. Como, por exemplo, o modelo de Dinâmica Populacional que possibilita ao Estado prever
+o tamanho da população das cidades e, assim, poder traçar planos e políticas que beneficiem toda a sociedade.
+
+Diante dos pontos expostos, é possível perceber a importância das equações diferenciais, pois elas fornecem ferramentas importantes para o entendimento e a resolução de diversos problemas.
+% problemas que afligem a humanidade.
+
+
+\bibliographystyle{amsplain}
+
+
+\begin{thebibliography}{10}
+
+\addcontentsline{toc}{chapter}{Referências Bibliográficas}
+
+
+\bibitem{ATKINS} ATKINS, P. W.; JONES, L. {\it Princípios de química: questionando a vida moderna e o meio ambiente.} 5ed. Porto Alegre: Bookman, 2012.
+
+\bibitem{BOYCE} BOYCE,  W. E;  Di PRIMA, R.C. {\it Equações Diferenciais Elementares e Problemas de Valores de Contorno.}  8ed. Guanabara: LTC Editora, 2006.
+
+\bibitem{BROWN} BROWN T.; LEMAY, H. E.; BURSTEN, B. E. {\it Química: a ciência central.} 9 ed. Prentice-Hall, 2005.
+
+
+\bibitem{CHARLES} CHARLES,  K.  A.;  MATTHEW,  N.  O.  S. {\it Fundamentos  de  Circuitos  Elétricos.} 5ed. São Paulo: McGraw-Hill Ltda 2008.
+
+
+\bibitem{PACHECO} PACHECO, A. L. S.  {\it Transformadas de Laplace: algumas aplicações.}  Monografia, 2011.
+
+%\bibitem{SODRE} SODRÉ, U., {\it Equações Diferenciais Ordinárias.}  Notas de aula,  2003.
+
+\bibitem{SPIEGEL} SPIEGEL, M. R. {\it Transformadas de Laplace.}   McGraw-Hill do Brasil, 1971.
+
+\bibitem{STEWART} STEWART, J. {\it Cálculo, Volume 2.} 7ed. São Paulo: Cengage Learning, 2013.
+
+\bibitem{YOUNG} YOUNG, H. D.; FREEDMAN, R. A. {\it Física III: Eletromagnetismo.} 12ed. São Paulo: Addison Wesley, 2009.
+
+\bibitem{ZILL} ZILL, D. G. {\it Equações Diferenciais com Aplicações em Modelagem.} São Paulo: Cengage Learning, 2011.
+
+\end{thebibliography}
+
+\newpage
+
+\noindent {\bf Auto-avaliação da estudante Kerolayne Meneses da Silva}
+
+O estudo desse projeto contribuiu de forma relevante para o aprimoramento do meu raciocínio lógico e das minhas habilidades na área matemática.
+Permitiu, também, o contato com uma nova linguagem de programação, o LaTex, que facilitou o processo de escrita desse relatório.
+As habilidades aprendidas nessa iniciação científica serão cruciais para o meu desenvolvimento acadêmico e profissional, além de permitir uma maior facilidade na elaboração de futuros projetos.
+
+\vspace{2cm}
+
+\noindent {\bf Avaliação da Orientadora Profa. Dra. Taciana Oliveira Souza}
+
+A estudante mostrou-se muito dedicada aos estudos e às atividades propostas no projeto
+de iniciação científica. Todas as atividades previstas no plano de trabalho foram realizadas, destancando-se a conclusão do projeto de iniciação científica antes do tempo esperado. Deve-se ressaltar que a estudante mostrou-se muito motivada com a pesquisa, desenvolvendo um trabalho de ótima
+qualidade. Assim, avalio o desempenho geral da estudante como excelente
+
+\end{document}

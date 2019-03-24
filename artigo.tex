@@ -1,0 +1,272 @@
+
+%%%%%%%%%%%%%%%% NÃO ALTERE O CAMPO ABAIXO 
+\documentclass[10pt,twoside,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[portuges]{babel}
+\usepackage[a4paper]{geometry}
+\geometry{tmargin=1.2cm,bmargin=1.7cm,lmargin=1.5cm,rmargin=1.5cm}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{subcaption} % figuras lado a lado
+\usepackage{booktabs} %tabelas
+\usepackage{url}% web links
+\usepackage{semat}
+\usepackage{lipsum} %Texto automático
+\usepackage{amsthm, amsmath, amssymb, wasysym, MnSymbol}
+
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{proposition}[theorem]{Proposição}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{definition}[theorem]{Definição}
+\newtheorem{corollary}[theorem]{Corolário}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+
+%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%% Se necessitar de pacotes adicionais insira abaixo
+
+%\usepackage[•]{•}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%
+% Não redefina ou crie comandos, por exemplo:
+% \R=\mathbb{R} ,\newtheorem{teo}{Teorema}, etc
+% Isto pode gerar conflito quando os trabalhos forem
+% compilados para o caderno de resumos
+%%%%%%%%%%%%%%
+
+%%%%%%%%%%% Não altere os comandos abaixo
+\newcommand*{\affaddr}[1]{#1} 
+\newcommand*{\affmark}[1][*]{\textsuperscript{#1}}
+\newcommand*{\email}[1]{\texttt{#1}}
+\usepackage{helvet}% Fonte 
+\renewcommand{\familydefault}{\sfdefault}% Fonte 
+\renewcommand\Authands{ e }
+\evento{VIII Semana de Iniciação Científica e Tecnológica da UFU e Mostra de Trabalhos do PET}
+\date{23 e 24 de outubro de 2018}
+%%%%%%%%%%%%%%%%
+
+
+% Dados do trabalho
+\title{Equações Diferenciais Ordinárias Aplicadas no Estudo de Circuitos Elétricos.}
+% Autores: o primeiro será, necessariamente, o apresentador do trabalho
+\author[1]{\underline{Kerolayne Meneses da Silva}\thanks{kerolaynemenesesphb@hotmail.com}}
+\author[2]{Taciana Oliveira Souza\thanks{tacioli@ufu.br}}
+\affil[1]{FEELT - UFU}
+\affil[2]{FAMAT - UFU}
+
+%palavras-chave: insira até três palavras
+\keywords{Equações Diferenciais, Transformada de Laplace, Circuitos Elétricos.}
+
+
+%---------------------------------------------------
+\begin{document}
+\inserirtitulo
+\linespread{1.5}% Espaçamento 1.5
+%==================================
+% RESUMO
+%==================================
+
+\section{Resumo}
+O presente trabalho realiza um estudo das equações diferenciais ordinárias aplicadas na modelagem de sistemas. Dando ênfase na análise de circuitos elétricos utilizando métodos de resolução dessas equações e da transformada de Laplace. Com os resultados obtidos, é possível construir uma avaliação de como cada componente afeta os valores de resposta do circuito.
+%==================================
+% INTRODUÇÃO
+%==================================
+\section{Introdução} % apague as linhas abaixo e insira aqui a introdução
+Da necessidade de descrever algum sistema ou fenômeno surgiu a área da modelagem matemática, isto é, a formulação de equações que descrevem  um sistema ou fenômeno por meio das variáveis atuantes. A partir da simulação de tal fenômeno, são obtidos dados experimentais os quais permitem a elaboração do modelo matemático. Muitas vezes este modelo inclui a taxa de variação de uma variável, resultando nas chamadas Equações Diferenciais Ordinárias.
+
+As Equações Diferenciais Ordinárias são subdivididas segundo sua ordem, onde se destacam as equações de primeira e segunda ordem. Tais grupos de equações podem ser ramificados ainda em vários tipos de equações, destacando: equações separáveis, equações lineares, equações exatas e equações homogêneas, todas de primeira ordem, e equações lineares (homogêneas ou não) de segunda ordem. Destaca-se uma vasta gama de aplicações das equações diferenciais ordinárias dentro da modelagem de sistemas, fato que pode ser verificado nas referências \cite{BOYCE}, \cite{PACHECO}, \cite{SOUZA}, \cite{SODRE}, \cite{SPIEGEL}, \cite{STEWART} e \cite{ZILL}. Essas equações serão utilizadas como métodos de resolução de circuitos para a descoberta dos valores de corrente e carga .
+
+%==================================
+% Primeira Seção
+%==================================
+
+\section{Equações Diferenciais Ordinárias de Primeira Ordem}
+
+Denomina-se Equação Diferencial Ordinária toda equação que envolve uma função de uma variável real desconhecida, $ y = y(x) $, e algumas de suas derivadas. A ordem de uma equação diferencial ordinária é definida como a ordem da maior derivada que ocorre na equação, pode-se representar uma equação de ordem n como segue:
+
+\begin{center}
+$\displaystyle F(x,y,y^{\prime},..., y^{n}) = 0$.
+\end{center}
+Uma equação é classificada como linear se ela for dada por: $\displaystyle a_n(x)y^{n} + a_{n-1}(x)y^{(n-1)} + ... + a_1(x)y^{\prime} + a_0(x)y = g(x)$, em que $a_n(x), a_{n-1}(x), ..., a_1(x)$ e $g(x)$ são funções dependentes de $x$. 
+
+A solução geral de uma equação diferencial ordinária, em um intervalo $I$, é a família de todas as possíveis soluções das equações diferenciais ordinárias definidas em $I$. A equação $ y' - y = 0$ tem solução geral $ y = Ce^x $, onde $C$ é uma constante qualquer e $ I = \mathbb{R} $, enquanto $ y = e^x $ é uma solução particular.
+
+\section{Equações Diferenciais Ordinárias Lineares de Segunda Ordem}
+
+Equações Diferenciais Ordinárias Lineares de Segunda Ordem são equações que podem ser escritas da seguinte forma:
+
+\begin{equation}
+a(x)y'' + b(x)y' + c(x)y = d(x)
+\end{equation}
+onde $a(x), b(x), c(x)$ e $d(x)$ são funções da variável $x$ chamadas coeficientes da Equações Diferenciais Ordinárias. A equação (1) é chamada homogênea se $d(x) = 0$, para todo $x$, isto é, $d$ é a função constante igual a zero. Se $d(x) \neq 0$ a equação é chamada não homogênea.
+
+\section{Transformada de Laplace}
+
+A transformada de Laplace de uma função $f(t)$ de uma variável real, para $t \geq 0$, é definida por
+
+\begin{center}
+$ \mathcal{L}\{f(t)\} = F(s) = \displaystyle \int^{\infty}_{0} e^{-st}f(t)dt$
+\end{center}
+desde que a integral imprópria seja convergente.
+
+{\bf Observação:} Quando a integral $\displaystyle \displaystyle \int^{\infty}_{0} e^{-st}f(t)dt$ converge o resultado é uma função da variável $s$, isto é, a transformada de Laplace de $f$ é uma função da variável $s$.
+
+\noindent {\bf Notação:} Usa-se letras maiúsculas para denotar a tranformada de Laplace, por exemplo, $\mathcal{L}\{f(t)\} = F(s)$.
+
+\subsection*{Transformada inversa de Laplace}
+
+\begin{definition} A transformada inversa de Laplace de $F(s)$ é uma função $f(t)$ tal que $\mathcal{L}\{f(t)\} = F(s)$.
+\end{definition}
+
+\noindent {\bf Notação:} $f(t) = \mathcal{L}^{-1}\{F(s)\}$.
+
+\section{Circuitos Elétricos} 
+
+Um circuito elétrico é formado por fontes de energia, fios condutores e alguns elementos elétricos como resistores, capacitores e indutores. O circuito é considerado fechado quando a corrente elétrica que sai do terminal positivo da fonte de energia percorre todos os componentes e volta no seu polo oposto. Para compreender o funcionamento de um circuito, é necessário saber conceitos básicos de eletricidade que podem ser encontrados em \cite{CHARLES} e \cite{YOUNG} .
+
+A carga elétrica $(Q)$ é definida como um conceito físico que determina interações eletromagnéticas de corpos carregados eletricamente. O movimento da carga elétrica dentro de um condutor constitui a corrente elétrica $(I)$, que pode ser definida como a taxa de variação da carga pelo tempo, 
+
+\begin{equation}
+I = \displaystyle \frac{dQ}{dt}.
+\end{equation}
+
+Para manter o movimento de carga elétrica em um circuito é necessário adicionar fontes, são elas que fornecem energia elétrica para manter o circuito funcionando. Além desses elementos, os circuitos também apresentam resistores, indutores e capacitores. Os resistores se opõem à passagem de corrente e com isso consomem energia. Porém, quanto aos indutores e capacitores, eles armazenam energia elétrica em seus interiores. 
+
+
+
+Por meio da Lei das Malhas de Kirchhoff é possível definir a diferença de potencial entre os terminais da fonte, pois ela estabelece que a soma dos potenciais dentro de uma malha é igual a zero. As diferenças de potenciais da resistência, do capacitor e do indutor, respectivamente, são dadas a seguir: $V_{R}(t) = RI$, $V_{C}(t) = \displaystyle \frac{Q}{C}$ e $V_{L}(t) = \displaystyle L\frac{dI}{dt}$. A partir da combinação desses elementos é definido o tipo de circuito, se ele é circuito RL ou circuito RLC.
+
+\subsection*{Circuitos RL}
+
+O circuito RL é constituído por um resistor de $R$ ohms $(\Omega)$, um indutor de indutância $L$ henries $(H)$ e é alimentado por uma fonte em volts $(V)$. Por ele percorre uma corrente $I(t)$ em ampères $(A)$, como pode ser verificado na Figura 1 abaixo. 
+
+\begin{figure}[!htb]\label{circuito}
+\centering
+\includegraphics[scale=0.2]{CircuitoA.pdf}
+ \caption{Circuito RL}
+\end{figure}
+
+Aplicando a Lei das Malhas de Kirchhoff e considerando uma corrente circulante no sentido horário, encontra-se a seguinte expressão:
+
+\begin{equation}
+V(t) = L \frac{dI}{dt} + RI.
+\end{equation}
+{\bf Exemplo 1:} Suponha que, no circuito da Figura 1, $V = 30 V$, $L = 0.1H$ e $R = 50\Omega$. Determine a corrente $I(t)$ sabendo que $I(0) = 0$.
+
+\noindent {\bf Solução:}
+Como a equação (4) é uma equação diferencial ordinária linear de primeira ordem, tem-se o seguinte fator integrante $\displaystyle u(t) = e^{\int \frac{R}{L}dt} = e^{\frac{Rt}{L}}$, multiplicando esse fator pela equação (4), tem-se: $\displaystyle V(t)e^{\frac{Rt}{L}} = e^{\frac{Rt}{L}} \frac{dI}{dt} + e^{\frac{Rt}{L}} \frac{RI}{L}$. 
+Resolvendo a equação linear anterior e substituindo os valores do enunciado, obtém-se
+
+\begin{center}
+$\displaystyle I(t) = 30 + Ke^{-500t}$.
+\end{center}
+Como $I(0) = 0$, $K = -30$. Portanto, a solução é $\displaystyle I(t) = 30 - 30e^{-500t}$.
+
+
+\subsection*{Circuitos RLC}
+
+O circuito RLC é semelhante ao RL, difere apenas pela adição de um capacitor de capacitância $C$ farads $(F)$, como pode ser verificado na Figura 2.
+
+\begin{figure}[!htb]\label{circuito}
+\centering
+\includegraphics[scale=0.2]{CircuitoB.pdf}
+ \caption{Circuito RLC}
+\end{figure}
+
+Aplicando a Lei das Malhas de Kirchhoff e considerando uma corrente circulante no sentido horário, encontra-se a seguinte expressão:
+
+\begin{equation}
+V(t) = L \frac{d^2Q}{dt^2} + R\frac{dQ}{dt} + \frac{Q}{C}.
+\end{equation}
+
+\noindent {\bf Exemplo 2:} Suponha que, no circuito da Figura 2, $V = 300 V$, $L = \displaystyle \frac{5}{3}H$, $R = 10\Omega$ e $C = \displaystyle \frac{1}{30}f$. Determine a corrente $I(t)$ e a carga $Q(t)$ sabendo que $Q(0) = 0$ e $Q'(0) = 0$.
+
+\noindent {\bf Solução:} Pela equação (5), tem-se:
+
+\begin{equation}
+300 = \frac{5}{3}\frac{d^2Q}{dt^2} + 10\frac{dQ}{dt} + 30Q.
+\end{equation}
+Solucionando pelo método da equação diferencial ordinária linear não homogênea de segunda ordem, $Q(t) = Q_p(t) + Q_c(t)$ onde $Q_c(t)$ é tal que: $\displaystyle \frac{5}{3}Q_c'' + 10Q_c' + 30Q_c = 0$. 
+A equação auxiliar da expressão acima é $\displaystyle \frac{5}{3}r^2 + 10r + 30 = 0$, de raízes $r_1 = -3 -3i$ e $r_2 = -3 + 3i$. Assim,
+\begin{center}
+$\displaystyle Q_c(t) = e^{-3t}(c_1cos(3t) + c_2sen(3t))$.
+\end{center}
+Quanto a $Q_p$, espera-se encontrar uma constante. Assim, $Q_p = A$, $Q_p' = 0$ e $Q_p'' = 0$. Substituindo esses valores na equação (6), tem-se $30A = 300 \Rightarrow A = 10$. Desse modo, $Q_p = 10$ e a carga é: 
+
+\begin{center}
+$Q(t) = e^{-3t}(c_1cos(3t) + c_2sen(3t)) + 10$.
+\end{center}
+Pela expressão (3), $I(t) = -3e^{-3t}(c_1cos(3t) + c_2sen(3t)) + e^{-3t}(-3c_1sen(3t) + 3c_2cos(3t))$. 
+Como $Q(0) = 0$ e $Q'(0) = 0$, obtém-se os seguintes valores de constantes: $c_1 = -10$ e $c_2 = -10$. Substituindo nas equações,
+
+\begin{equation}
+Q(t) = - 10e^{-3t}cos(3t) -10e^{-3t}sen(3t) + 10,
+\end{equation}
+\begin{equation}
+I(t) = 60e^{-3t}sen(3t).
+\end{equation} 
+Outra forma de resolução é aplicando a transformada de Laplace na equação (6), adotando $\mathcal{L}\{Q(t)\} = q$:
+
+\begin{center}
+$\displaystyle \frac{5}{3}(s^2q - sq(0) - q'(0)) + 10(sq - q(0)) + 30q = \frac{300}{s}$.
+\end{center}
+Pelo método das frações parciais, $\displaystyle q = \frac{10}{s} - \frac{10(s + 3)}{(s + 3)^2 + 9} - \frac{30}{(s + 3)^2 + 9}$.
+Aplicando a transformada inversa na equação a, obtém-se a equação da carga:
+
+\begin{equation}
+Q(t) = \mathcal{L}^{-1}\{q(s)\} = 10 - 10e^{-3t}cos(3t) -10e^{-3t}sen(3t).
+\end{equation} 
+Pela expressão (3),
+
+\begin{equation}
+I(t) = 60e^{-3t}sen(3t).
+\end{equation} 
+Comparando os resultados obtidos, percebe-se que as equações (7) e (9), (6) e (8) são equivalentes, o que valida o método.
+
+%==================================
+% CONCLUSÃO
+%==================================
+\section{Conclusão} % apague as linhas abaixo e insira aqui a conclusão
+
+Diante do exposto, percebe-se que as Equações Diferenciais Ordinárias proporcionam as ferramentas ideais para a resolução de sistemas. Como no exemplo de circuitos elétricos, que foi possível escrever a equação da corrente e da carga por meio de Equações Diferenciais Ordinárias de primeira e segunda ordem. 
+Já no método da transformada de Laplace, a manipulação se tornou mais prática, pois foi utilizada apenas transformadas inversas elementares, não sendo necessário utilizar o método de coeficientes a determinar. Diante dos pontos expostos, é possível perceber a importância das equações diferenciais ordinárias, pois elas são essenciais para o entendimento e a resolução de diversos problemas da realidade humana.
+
+%==================================
+% AGRADECIMENTOS
+%==================================
+\section{Agradecimentos} % apague as linhas abaixo e insira aqui os agradecimentos
+Agradeço a todos que contribuíram na resolução desse projeto e, também, a minha orientadora, a professora Taciana Oliveira Souza, que teve papel fundamental na elaboração desse trabalho.
+
+%==================================
+% REFERÊNCIAS
+%==================================
+\begin{thebibliography}{9} % apague as linhas abaixo e insira aqui bibliografia
+
+\bibitem{BOYCE} BOYCE,  W. E;  Di PRIMA, R.C.  {\it Equações Diferenciais Elementares e Problemas de Valores de Contorno.}  8ed. Guanabara: LTC Editora, 2006.
+
+\bibitem{CHARLES} CHARLES  K.  ALEXANDER  and  MATTHEW  N.  O  SADIKU, {\it Fundamentos  de  Circuitos  Elétricos.} 5ed. São Paulo: McGraw-Hill Ltda 2008.
+
+\bibitem{PACHECO} PACHECO, A. L. S.  {\it Transformadas de Laplace: algumas aplicações.}  Monografia, 2011.
+
+\bibitem{SOUZA} RODRIGUES, B. P.; SOUZA, T. O. {\it Equações Diferenciais Ordinárias: do Beisebol à Eletricidade.} Horizonte Científico, v.10, n. 1, 2016.
+
+\bibitem{SODRE} SODRÉ, U. {\it Equações Diferenciais Ordinárias.}  Notas de aula,  2003.
+
+\bibitem{SPIEGEL} SPIEGEL, M. R.  {\it Transformadas de Laplace.}   McGraw-Hill do Brasil, 1971.
+
+\bibitem{STEWART} STEWART, J. {\it Cálculo, Volume 2.} 7ed. São Paulo: Cengage Learning, 2013.
+
+\bibitem{YOUNG} YOUNG, H. D.; FREEDMAN, R. A., {\it Física III: Eletromagnetismo.} 12ed. São Paulo: Addison Wesley, 2009.
+
+\bibitem{ZILL} ZILL, D. G., CULLEN, M. R. {\it Equações Diferenciais.} Makron Books, 2001.
+
+\end{thebibliography}
+
+%--- FIM ---
+\end{document}

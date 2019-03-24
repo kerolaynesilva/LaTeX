@@ -1,0 +1,248 @@
+%%Modelo criado por R\'egis (c) 2011
+%% http://latexbr.blogspot.com
+%% twitter: @rg3915
+\documentclass{sciposter}% especifica o tipo de documento (neste caso é um poster)
+\usepackage[brazil]{babel} %define o idioma utilizado
+%\usepackage[latin1]{inputenc}% este pacote se aplica somente ao windows
+\usepackage[utf8]{inputenc} % para trabalhar com linux (sistema operacional)
+\usepackage[centertags]{amsmath} %amplia os comandos matematicos
+\usepackage{hyperref,amsfonts,multirow,multicol}% palavras separadas por virgulas significas varios pacotes
+\hypersetup{pdfpagelayout=SinglePage} %abre a pagina em modo simples
+\usepackage{graphicx,colortbl}%permite inserir figuras
+\usepackage{lipsum} %sugest\~ao de texto
+\usepackage{geometry}
+\geometry{paperwidth=90cm,paperheight=120cm,centering,
+    textwidth=77cm,textheight=115cm,left=3cm,top=3cm}% corresponde as dimensoes do poster
+\pagestyle{plain}  
+\frenchspacing
+%\usepackage{pstricks,pst-solides3d}
+%\usepackage{tikz}
+
+%%Transformando tudo em branco
+\renewcommand{\thesection}{\textcolor{white}{\arabic{section}}} % estabelece a cor e fonte das seções
+\renewcommand{\thesubsection}{\textcolor{white}{\arabic{section}.\arabic{subsection}}}
+\addto\captionsbrazil{\renewcommand{\bibname}{\textcolor{white}{Refer\^encias}}}
+
+%%Definindo cores
+\definecolor{BoxCol}{RGB}{32,178,170} %cor para ver mais cores visite o site  Colour Lovers
+
+%%Define o caminho das figuras, v\~a�lido somente para o comando \includegraphics
+\graphicspath{{figuras/}}
+%********************************************************************
+%%Teoremas
+\usepackage{theorem}
+\theorembodyfont{\normalfont\upshape}
+\newtheorem{ex}{Exemplo}
+\newenvironment{defn}[1][Defini\c{c}\~ao]{\textbf{#1:}\
+}%
+%********************************************************************
+%%Definindo de novos comandos
+
+\newcommand{\tituloA}[1]{\emph{\textbf{\color{white}{#1}}}}
+\newcommand{\tituloB}[1]{\emph{\textbf{\color{blue}{#1}}}}
+\newcommand{\R}{\mathbb{R}}
+
+
+%********************************************************************
+\begin{document}
+
+%%titulo
+\colorbox{BoxCol}{
+  \begin{minipage}{\textwidth}
+    \color{white}{
+      \begin{center}
+        \huge{\textbf{\vspace{1cm} \\
+          EQUAÇÕES DIFERENCIAIS ORDINÁRIAS APLICADAS NO ESTUDO DE CIRCUITOS ELÉTRICOS  %insira o titulo aqui
+        \vspace{1cm} \\}}
+      \end{center}
+    }
+  \end{minipage}
+}
+
+\qquad %espa\c{c}o
+
+%Nome, instituto, email, logo
+\title{}
+\author{\textbf{Kerolayne Meneses da Silva e Taciana Oliveira Souza†}}
+%\footnote{kerolaynemenesesphb@hotmail.com}}}
+\institute{FEELT, FAMAT}
+\email{\texttt{\, \,  kerolaynemenesesphb@hotmail.com}}
+\leftlogo[0.9]{ufulogo} %logotipo da universidade
+\rightlogo[1.4]{pet} %logotipo da universidade
+
+\qquad %espa\c{c}o
+
+\maketitle %gera titulo
+
+\colorbox{BoxCol}{
+  \begin{minipage}{\textwidth}
+    \begin{center}
+      \vspace{0.3 cm}
+      %digite o nome do congresso aqui
+      \Large{ \tituloA{ VII Semana de Iniciação Científica e Tecnológica da UFU e Mostra de Trabalhos do PET}}
+      \vspace{0.3cm} 
+    \end{center}
+  \end{minipage}
+}
+
+\quad
+
+%Texto em 2 colunas
+\begin{multicols}{2}{
+
+%Paragrafo.
+\setlength{\parindent}{2em}
+
+\section*{\tituloA{INTRODU\c{C}\~AO}}
+%\PARstart{O} 
+Da necessidade de descrever sistemas ou fenômenos naturais surgiu a  modelagem matemática, isto é, a descrição matemática de um sistema ou fenômeno feita, em muitas situações, por meio de equações envolvendo as variáveis atuantes. A partir da simulação de um fenômeno, são obtidos dados experimentais com os quais se elabora um modelo matemático correspondente. Muitas vezes este modelo inclui a taxa de variação de uma variável atuante, resultando nas chamadas Equações Diferenciais Ordinárias (EDO's).
+
+
+As EDO's são subdivididas segundo sua ordem, onde se destacam as equações de primeira e segunda ordem.  Destacamos a vasta gama de aplicações das EDO's dentro da modelagem de sistemas, fato que pode ser verificado nas referências \cite{BOYCE}, \cite{PACHECO}, \cite{SOUZA} e \cite{ZILL}.  Neste trabalho apresentamos aplicações das EDO's lineares de primeira e segunda ordens no estudo de circuitos elétricos.
+
+%Tais grupos de EDO's podem ser ramificados ainda em vários tipos de equações, destacando: equações separáveis, equações lineares, equações exatas e equações homogêneas e equações lineares de segunda ordem.
+\section*{\tituloA{METODOLOGIA}}
+
+O método utilizado no desenvolvimento deste trabalho consistiu no estudo de livros e artigos relacionados ao tema proposto. Encontros semanais foram realizados nos quais a estudante  exp\^os sobre os t\'opicos estudados,  promovendo discuss\~oes com a orientadora para sanar as d\'uvidas surgidas. Para a apresenta\c{c}\~ao semanal de resultados, a estudante entrou ainda em contato com o ambiente TeXnicCenter (linguagem LateX) que permite a elabora\c{c}\~ao de textos t\'ecnico-cient\'ificos.
+
+
+%\subsection*{\tituloB{subse\c{c}\~ao}}
+
+\section*{\tituloA{RESULTADOS}}
+
+Um circuito elétrico é formado por fontes de energia, fios condutores e alguns elementos elétricos como resistores, capacitores e indutores. O circuito é considerado fechado quando a corrente elétrica que sai do terminal positivo da fonte de energia, percorre todos os componentes e volta no polo oposto da fonte. Para compreender o funcionamento de um circuito, é necessário saber conceitos básicos de eletricidade que podem ser encontrados em \cite{CHARLES}.
+
+\subsection*{CIRCUITOS RL}
+
+O circuito RL é constituído por um resistor, um indutor e é alimentado por uma fonte. Por ele percorre uma corrente $I(t)$, como pode ser verificado na Figura 1 abaixo.
+
+\begin{figure}[!htb]\label{circuito}
+\centering
+\includegraphics[scale=0.6]{CircuitoA.pdf}
+\begin{center} 
+Figura 1: Circuito RL
+\end{center}
+\end{figure}
+
+Aplicando a Lei das Malhas de Kirchhoff e considerando uma corrente circulante no sentido horário, encontra-se a seguinte expressão:
+
+\begin{equation}
+V(t) = L \frac{dI}{dt} + RI.
+\end{equation}
+
+\begin{ex}:
+Suponha que, no circuito da Figura 1, $V = 30 V$, $L = 0.1H$ e $R = 50\Omega$. Determine a corrente $I(t)$ sabendo que $I(0) = 0$.
+
+\noindent {\bf Solução:}
+Como a equação (1) é uma EDO linear de primeira ordem, tem-se o seguinte fator integrante $\displaystyle u(t) = e^{\int \frac{R}{L}dt} = e^{\frac{Rt}{L}}$, multiplicando esse fator pela equação (1) resulta em
+
+\begin{center}
+$\displaystyle V(t)e^{\frac{Rt}{L}} = e^{\frac{Rt}{L}} \frac{dI}{dt} + e^{\frac{Rt}{L}} \frac{RI}{L}$.
+\end{center}
+Resolvendo a equação linear acima, obtém-se
+
+%\begin{center}
+%$\displaystyle I(t) = V + Ke^{\frac{-Rt}{L}}$
+%\end{center}
+\begin{center}
+$\displaystyle I(t) = 30 + Ke^{-500t}$.
+\end{center}
+Como $I(0) = 0$, $K = -30$. Portanto, a solução é
+
+\begin{center}
+$\displaystyle I(t) = 30 - 30e^{-500t}$.
+\end{center}
+\end{ex}
+
+\subsection*{CIRCUITOS RLC}
+
+O circuito RLC é semelhante ao RL, difere apenas pela adição de um capacitor, como pode observado na Figura 2.
+
+\begin{figure}[!htb]\label{circuito}
+\centering
+\includegraphics[scale=0.6]{CircuitoB.pdf}
+\begin{center}
+Figura 2: Circuito RLC
+\end{center}
+\end{figure}
+
+Aplicando a Lei das Malhas de Kirchhoff e considerando uma corrente circulante no sentido horário, encontra-se a seguinte expressão:
+
+\begin{equation}
+V(t) = L \frac{d^2Q}{dt^2} + R\frac{dQ}{dt} + \frac{Q}{C}.
+\end{equation}
+
+\begin{ex}:
+Suponha que, no circuito da Figura 2, $V = 300 V$, $L = \displaystyle \frac{5}{3}H$, $R = 10\Omega$ e $C = \displaystyle \frac{1}{30}f$. Determine a corrente $I(t)$ e a carga $Q(t)$ sabendo que $Q(0) = 0$ e $Q'(0) = 0$.
+
+\noindent {\bf Solução:} Pela equação (2), tem-se:
+
+\begin{equation}
+300 = \frac{5}{3}\frac{d^2Q}{dt^2} + 10\frac{dQ}{dt} + 30Q.
+\end{equation}
+Aplicando a transformada de Laplace na equação (3), adotando $\mathcal{L}\{Q(t)\} = q$:
+
+\begin{center}
+$\displaystyle \frac{5}{3}(s^2q - sq(0) - q'(0)) + 10(sq - q(0)) + 30q = \frac{300}{s}$.
+\end{center}
+Isolando $q$ para encontrar as transformadas elementares:
+
+\begin{center}
+$\displaystyle q = \frac{180}{s(s^2 + 6s + 18)}$.
+\end{center}
+Pelo método das frações parciais,
+
+\begin{center}
+$\displaystyle q = \frac{10}{s} - \frac{10(s + 3)}{(s + 3)^2 + 9} - \frac{30}{(s + 3)^2 + 9}$.
+\end{center}
+
+A equação acima apresenta as seguintes transformadas inversas elementares: $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{a}{s} \Big\} = a$, $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{a}{s^2 + a^2} \Big\} = sen(at)$ e $\displaystyle \mathcal{L}^{-1}\ \Big\{\frac{s}{s^2 + a^2} \Big\} = cos(at)$. Aplicando a transformada inversa, obtém-se:
+
+\begin{equation}
+Q(t) = \mathcal{L}^{-1}\{q(s)\} = 10 - 10e^{-3t}cos(3t) -10e^{-3t}sen(3t).
+\end{equation} 
+
+Pela expressão $I(t) = \displaystyle \frac{dQ}{dt}$, tem-se
+
+\begin{equation}
+I(t) = 60e^{-3t}sen(3t).
+\end{equation} 
+\end{ex}
+
+
+\section*{\tituloA{CONCLUS\~AO}}
+
+%Destaca-se  a introdu\c{c}\~ao dos estudantes \`a linguagem \LaTeX  (usada na digita\c{c}\~ao de textos matem\'aticos), a qual foi utilizada na elabora\c{c}\~ao deste p\^oster.
+%Conclui-se que a inicia\c{c}\~ao cient\'ifica proposta desempenhou um papel importante no desenvolvimento e amplia\c{c}\~ao da forma\c{c}\~ao  da estudante.
+
+Durante este estudo, pode-se perceber a importância das equações diferenciais na modelagem de situações reais, como na análise de circuitos elétricos. Com isso, foi necessário o contato uma nova linguagem de programação, o LaTeX, que tornou possível a escrita de termos matemáticos com maior facilidade. Portanto, esse projeto proporcionou uma nova perspectiva de análise e resolução de sistemas, proporcionando ferramentas essenciais para a resolução de problemas do cotidiano humano.
+
+\section*{\tituloA{REFER\^ENCIAS}}
+\begingroup
+\renewcommand{\section}[2]{}
+\begin{thebibliography}{99}
+
+\bibitem{BOYCE} BOYCE,  W. E;  Di PRIMA, R.C.,  {\it Equações Diferenciais Elementares e Problemas de Valores de Contorno.}  8ed. Guanabara: LTC Editora, 2006.
+
+\bibitem{CHARLES} ALEXANDER, C. K.; SADIKU, M. N. O., {\it Fundamentos  de  Circuitos  Elétricos.} 5ed. São Paulo: McGraw-Hill Ltda 2008.
+
+\bibitem{PACHECO} PACHECO, A. L. S.,  {\it Transformadas de Laplace: algumas aplicações.}  Monografia, 2011.
+
+\bibitem{SOUZA} RODRIGUES, B. P.; SOUZA, T. O., {\it Equações Diferenciais Ordinárias: do Beisebol à Eletricidade.} Horizonte Científico, v.10, n. 1, 2016.
+
+%\bibitem{SODRE} SODRÉ, U. {\it Equações Diferenciais Ordinárias.}  Notas de aula,  2003.
+
+%\bibitem{SPIEGEL} SPIEGEL, M. R.  {\it Transformadas de Laplace.}   McGraw-Hill do Brasil, 1971.
+
+%\bibitem{STEWART} STEWART, J. {\it Cálculo, Volume 2.} 7ed. São Paulo: Cengage Learning, 2013.
+
+%\bibitem{ZILL} ZILL, D. G., CULLEN, M. R. {\it Equações Diferenciais.} Makron Books, 2001.
+\bibitem{ZILL} ZILL, D. G., {\it Equações Diferenciais com Aplicações em Modelagem.} São Paulo: Cengage Learning, 2011.
+
+
+\end{thebibliography}
+\endgroup
+}
+\end{multicols}
+
+\end{document} 
